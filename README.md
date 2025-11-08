@@ -1,25 +1,128 @@
 # DevOps Learning Roadmap
 
-This repository documents my 6-month transition into a **DevOps engineer role** focused on:
+## Overview
 
-- 🐳 Docker & Docker Compose  
-- ☸️ Kubernetes (minikube → EKS)  
-- ⚙️ Terraform (AWS infra as code)  
-- 🐘 PostgreSQL (local, cloud, Helm chart)  
-- 🐍 Python & 🦦 Go automation  
-- 🚀 CI/CD pipelines (GitHub Actions)
+This repository documents my transition into a senior DevOps/Infrastructure Engineer role, with a focus on cloud-native technologies and modern infrastructure practices. With 15 years of Linux systems administration experience managing production infrastructure, I'm expanding my skillset into container orchestration, infrastructure as code, and CI/CD automation.
+
+## Background
+
+I currently manage production Linux infrastructure including:
+- Proxmox virtualization clusters
+- OPNsense firewalls and Ubiquiti networking
+- AWS cloud services
+- Docker containerized services (Gitea, oauth2-proxy, n8n, and others)
+- Ansible automation and custom tooling
+
+This repository represents my structured approach to mastering enterprise-grade DevOps practices through hands-on projects and real-world implementations.
+
+## Core Technologies
+
+**Containerization & Orchestration**
+- Docker and Docker Compose for multi-container applications
+- Kubernetes for container orchestration (local development to AWS EKS)
+- Helm for package management and deployments
+
+**Infrastructure as Code**
+- Terraform for AWS infrastructure provisioning
+- Configuration management and state management
+- Multi-environment deployments
+
+**Databases**
+- PostgreSQL (local, RDS, Kubernetes StatefulSets)
+- Database migrations and backup automation
+- Connection pooling and high availability
+
+**Development**
+- Python for APIs and automation
+- Go for compiled tools and services
+- REST API development and testing
+
+**CI/CD**
+- GitHub Actions for automated testing and deployment
+- Container image building and registry management
+- Infrastructure deployment automation
+
+## Repository Structure
+
+```
+.
+├── projects/          # Hands-on projects for each technology phase
+├── infra/             # Terraform modules and Helm charts
+├── docs/              # Architecture diagrams, notes, and documentation
+├── .github/workflows/ # CI/CD pipeline definitions
+├── learning-plan.md   # Detailed 6-month learning roadmap
+└── study-routine.md   # Weekly study schedule and tracking
+```
+
+## Current Progress
+
+**Completed:**
+- Docker fundamentals and multi-stage builds
+- Container optimization and production best practices
+- Docker Compose for local development environments
+
+**In Progress:**
+- Python Flask API development
+- Multi-container applications with PostgreSQL
+- Production-ready Docker configurations
+
+**Upcoming:**
+- Terraform for AWS infrastructure
+- Kubernetes deployment patterns
+- CI/CD pipeline implementation
+
+## Projects
+
+As projects are completed, they will be linked here with architecture diagrams and deployment documentation.
+
+### Month 1: Multi-Container Applications
+- Flask REST API with PostgreSQL backend
+- Docker Compose production patterns
+- Database persistence and health checks
+
+### Month 2: Cloud Infrastructure
+- Terraform-managed AWS infrastructure
+- RDS PostgreSQL deployment
+- EC2 application hosting
+
+### Month 3-4: Kubernetes
+- Application deployment on Kubernetes
+- StatefulSets for database workloads
+- Helm chart development
+- AWS EKS cluster management
+
+### Month 5: Go Development
+- Go microservices and CLI tools
+- Database migrations automation
+- Containerized Go applications
+
+### Month 6: CI/CD & Automation
+- GitHub Actions pipelines
+- Automated infrastructure deployment
+- Database backup automation
+- Monitoring and alerting
+
+## Learning Approach
+
+This roadmap emphasizes practical, production-ready implementations over theoretical knowledge. Each project includes:
+- Working code with comprehensive documentation
+- Architecture diagrams and design decisions
+- Troubleshooting guides and lessons learned
+- Screenshots and deployment evidence
+
+## Goals
+
+The skills demonstrated in this repository target senior-level infrastructure and DevOps engineering roles, with emphasis on:
+- Cloud-native application deployment
+- Infrastructure automation and consistency
+- Production reliability and monitoring
+- Security best practices
+- Documentation and knowledge sharing
+
+## Connect
+
+This is an active learning repository. Check the commit history and project folders to see current progress and implementations.
 
 ---
 
-## 📂 Folder Overview
-| Folder | Description |
-|---------|--------------|
-| `projects/` | Real builds for each phase (Docker, Terraform, K8s, Go) |
-| `infra/` | Terraform + Helm configuration for deployments |
-| `docs/` | Notes, diagrams, screenshots for portfolio proof |
-| `.github/workflows/` | GitHub Actions pipelines |
-| `learning-plan.md` | Step-by-step 6-month plan |
-| `study-routine.md` | Optional daily/weekly guide |
-
-
-
+*Last Updated: November 2025*
