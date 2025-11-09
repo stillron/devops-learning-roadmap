@@ -1,4 +1,4 @@
-# 🧭 Study Routine (Optional Guide)
+# Study Routine (Optional Guide)
 
 This file is **not required** to complete the DevOps learning plan.  
 Use it only if you ever feel stuck, scattered, or want a rhythm to follow.
@@ -7,7 +7,7 @@ Think of it like a gym warm-up playlist — helpful, but never mandatory.
 
 ---
 
-## 🔁 Suggested Weekly Rhythm (10–12 hrs/week)
+## Suggested Weekly Rhythm (10–12 hrs/week)
 
 | Day | Time | Focus |
 |------|------|-------|
@@ -24,7 +24,7 @@ Think of it like a gym warm-up playlist — helpful, but never mandatory.
 
 ---
 
-## 🔍 3-Step Daily Flow (30 sec to remember)
+## 3-Step Daily Flow (30 sec to remember)
 
 1. **Start** → “Today I will _____” (one sentence)  
 2. **Work** → small, real, hands-on step  
@@ -35,7 +35,7 @@ No journaling walls. No perfect discipline needed.
 
 ---
 
-## ✅ What Success Actually Looks Like
+## What Success Actually Looks Like
 
 Success is **not**:
 
@@ -54,7 +54,7 @@ That’s it. That’s the game.
 
 ---
 
-## 🧠 If You Ever Feel Overwhelmed
+## If You Ever Feel Overwhelmed
 
 Use this reset checklist:
 
@@ -67,7 +67,7 @@ Progress = momentum, not perfection.
 
 ---
 
-## 💪 Personal Reminder
+## Personal Reminder
 
 You’ve already:
 - Managed OPNsense firewalls in CARP  
