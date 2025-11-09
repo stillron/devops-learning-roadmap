@@ -51,7 +51,6 @@ This repository represents my structured approach to mastering enterprise-grade 
 ├── docs/              # Architecture diagrams, notes, and documentation
 ├── .github/workflows/ # CI/CD pipeline definitions
 ├── learning-plan.md   # Detailed 6-month learning roadmap
-└── study-routine.md   # Weekly study schedule and tracking
 ```
 
 ## Current Progress
