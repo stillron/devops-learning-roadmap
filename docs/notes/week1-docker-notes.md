@@ -1,0 +1,1 @@
+- When using `json` option in requests, I accidentally made the payload a string instead of a python object and this cause an error.
