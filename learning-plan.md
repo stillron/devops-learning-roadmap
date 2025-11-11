@@ -13,12 +13,12 @@
 ---
 
 ### Week 1 – Python Environment + Simple API ✅/🕐/❌
-Planned hours: 10 | Actual: 5 
+Planned hours: 10 | Actual: 7
 
 #### Tasks
 - [x] Set up Python 3.12 + Poetry/venv
 - [x] Review Python fundamentals: dicts, loops, list comprehensions, JSON
-- [ ] Write a simple Flask REST API with 3-4 endpoints (GET, POST)
+- [x] Write a simple Flask REST API with 3-4 endpoints (GET, POST)
 - [ ] Practice `requests` library for API calls
 - [ ] Containerize the Flask app (single-stage Dockerfile)
 
