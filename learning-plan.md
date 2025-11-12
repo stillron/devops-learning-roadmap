@@ -20,7 +20,7 @@ Planned hours: 10 | Actual: 7
 - [x] Review Python fundamentals: dicts, loops, list comprehensions, JSON
 - [x] Write a simple Flask REST API with 3-4 endpoints (GET, POST)
 - [x] Practice `requests` library for API calls
-- [ ] Containerize the Flask app (single-stage Dockerfile)
+- [x] Containerize the Flask app (single-stage Dockerfile)
 
 #### Resources
 - [Python Official Tutorial](https://docs.python.org/3/tutorial/) (review chapters 3-5, 9)
@@ -33,9 +33,25 @@ Planned hours: 10 | Actual: 7
 - Dockerfile that builds and runs the app
 
 #### Reflection
-**What I learned:**  
+**What I learned:**
+    - How to build a docker image (single and multi-stage)
+    - That in term of isolation, it makes sense to use venv even in a docker image
+    - Basic Flask routing
+    - How to process POST/PUT data in flask
+    - How to issue simple http requests using the Python requests module
 **What broke:**  
-**What I'll improve next week:**  
+    - In the flask app, I was initially trying to pass post data as URL variables.
+    - When building a docker image for a dev flask app, I need to designate `--host=0.0.0.0` in order for the app to be accessible from outside the container
+    - Copied app.py to the wrong path in the Dockerfile a copy of times (COPY app.py /app)
+**What I'll improve next week:**
+    - Slow down with documentation - accept that I need time to read and experiment
+    - When docs feel overwhelming, focus on quickstart/examples first, then dive deeper only for what I specifically need
+    - Run small experiments to test understanding rather than trying to absorb everything at once
+    - Continue rebuilding Python fluency through practice
+**Key commands/patterns to remember:**
+    - Multi-stage: COPY --from-builder /app/.venv app/.venv
+    - Flask in docker needs: --host=0.0.0.0
+    - Python isolated mode: python -I
 
 ---
 
