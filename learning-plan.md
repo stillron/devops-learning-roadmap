@@ -13,7 +13,7 @@
 ---
 
 ### Week 1 – Python Environment + Simple API ✅/🕐/❌
-Planned hours: 10 | Actual: 7
+Planned hours: 10 | Actual: 10
 
 #### Tasks
 - [x] Set up Python 3.12 + Poetry/venv
