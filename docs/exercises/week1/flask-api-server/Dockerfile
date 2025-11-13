@@ -5,7 +5,9 @@ WORKDIR /app
 RUN python -m venv /app/.venv
 
 COPY requirements.txt .
-RUN /app/.venv/bin/pip install --no-cache-dir -r requirements.txt
+
+# Use cache mount to speed up rebuilds while keeping image size small
+RUN --mount=type=cache,target=/root/.cache /app/.venv/bin/pip install -r requirements.txt
 
 FROM python:3.14-slim
 
