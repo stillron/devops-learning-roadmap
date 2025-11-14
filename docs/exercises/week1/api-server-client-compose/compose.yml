@@ -1,0 +1,17 @@
+services:
+  flask-api-server:
+    image: flask-api-server
+    build: ./flask-api-server
+    networks:
+      - server-client
+
+  api-client:
+    image: api-client
+    build: ./api-client
+    depends_on:
+      - flask-api-server
+    networks:
+      - server-client
+
+networks:
+  server-client:
