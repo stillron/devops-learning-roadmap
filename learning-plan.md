@@ -63,10 +63,10 @@ Planned hours: 10 | Actual: 10
 ---
 
 ### Week 2 – Docker Compose + PostgreSQL Integration ✅/🕐/❌
-Planned hours: 12 | Actual: ___  
+Planned hours: 12 | Actual: 2  
 
 #### Tasks
-- [ ] Install PostgreSQL locally and practice basic queries
+- [x] Install PostgreSQL locally and practice basic queries
 - [ ] Create `docker-compose.yml` for Flask + Postgres
 - [ ] Add persistent volume for Postgres data
 - [ ] Store credentials in `.env` file (use python-dotenv)
