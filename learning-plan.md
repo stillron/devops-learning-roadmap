@@ -76,7 +76,7 @@ Planned hours: 12 | Actual: 2
 #### Resources
 - [PostgreSQL psql Basics](https://www.postgresql.org/docs/current/app-psql.html)
 - [Docker Compose](https://docs.docker.com/compose/)
-- [psycopg2 Docs](https://www.psycopg.org/docs/) or [SQLAlchemy Tutorial](https://docs.sqlalchemy.org/en/20/tutorial/)
+- [psycopg Docs](https://www.psycopg.org/psycopg3/docs/) or [SQLAlchemy Tutorial](https://docs.sqlalchemy.org/en/20/tutorial/)
 
 #### Proof of Completion
 - `docker-compose.yml` with Flask + Postgres + volume
