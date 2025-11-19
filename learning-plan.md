@@ -63,7 +63,7 @@ Planned hours: 10 | Actual: 10
 ---
 
 ### Week 2 – Docker Compose + PostgreSQL Integration ✅/🕐/❌
-Planned hours: 12 | Actual: 2  
+Planned hours: 12 | Actual: 6  
 
 #### Tasks
 - [x] Install PostgreSQL locally and practice basic queries
