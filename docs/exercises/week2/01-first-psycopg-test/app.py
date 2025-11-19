@@ -34,3 +34,38 @@ def add_message():
 
             inserted = cur.fetchone()
     return {"message": "Success!", "inserted": inserted}
+
+@app.delete("/message/<int:id>")
+def remove_message(id):
+    with psycopg.connect("dbname=test_db user=ron.houk", row_factory=dict_row) as conn:
+        with conn.cursor() as cur:
+
+            cur.execute("""
+            DELETE FROM test_messages WHERE id = %s
+            RETURNING *""",
+            (id,));
+
+            deleted = cur.fetchone()
+    if deleted:
+        return {"message": "Success!", "deleted": deleted}
+    else:
+        return {"message": "Failed", "err": f"id {id} doesn't exist"}
+
+@app.put("/message/<int:id>")
+def update_message(id):
+    with psycopg.connect("dbname=test_db user=ron.houk", row_factory=dict_row) as conn:
+        with conn.cursor() as cur:
+            message = request.json["message"]
+
+            cur.execute("""
+            UPDATE test_messages
+            SET message = %s
+            WHERE id = %s
+            RETURNING id, message""",
+            (message, id));
+
+            updated = cur.fetchone()
+    if updated:
+        return {"message": "Success!", "updated": updated}
+    else:
+        return {"message": "Failed", "err": f"id {id} doesn't exist"}
