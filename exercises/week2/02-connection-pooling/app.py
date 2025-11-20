@@ -32,7 +32,10 @@ def add_message():
             (message,))
 
             inserted = cur.fetchone()
-    return {"message": "Success!", "inserted": inserted}
+    if inserted:
+        return {"message": "Success!", "inserted": inserted}, 201
+    else:
+        return {"message": "Failed", "err": f"Failed to insert message {message}"}, 500
 
 @app.delete("/message/<int:id>")
 def remove_message(id):
@@ -46,9 +49,9 @@ def remove_message(id):
 
             deleted = cur.fetchone()
     if deleted:
-        return {"message": "Success!", "deleted": deleted}
+        return {"message": "Success!", "deleted": deleted}, 200
     else:
-        return {"message": "Failed", "err": f"id {id} doesn't exist"}
+        return {"message": "Failed", "err": f"id {id} doesn't exist"}, 404
 
 @app.put("/message/<int:id>")
 def update_message(id):
@@ -65,6 +68,6 @@ def update_message(id):
 
             updated = cur.fetchone()
     if updated:
-        return {"message": "Success!", "updated": updated}
+        return {"message": "Success!", "updated": updated}, 200
     else:
-        return {"message": "Failed", "err": f"id {id} doesn't exist"}
+        return {"message": "Failed", "err": f"id {id} doesn't exist"}, 404
