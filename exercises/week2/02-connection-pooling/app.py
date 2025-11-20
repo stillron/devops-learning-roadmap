@@ -1,6 +1,5 @@
 from flask import Flask
 from flask import request
-import psycopg
 from db import pool
 
 app = Flask(__name__)
