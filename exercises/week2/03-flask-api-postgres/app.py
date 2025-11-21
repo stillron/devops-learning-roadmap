@@ -11,6 +11,16 @@ def get_all_containers():
 
     return containers, 200
 
+@app.get("/container/<int:id>")
+def get_container(id):
+    with pool.connection() as conn:
+        with conn.cursor() as cur:
+            container = cur.execute("SELECT * FROM containers WHERE id = %s", (id,)).fetchone()
+    if container:
+        return {"message": "Success", "container": container}, 200
+    else:
+        return {"message": "Failed", "err": f"Container id {id} not found."}, 404
+
 @app.post("/container")
 def insert_container():
     container = {}
