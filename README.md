@@ -46,12 +46,12 @@ This repository represents my structured approach to mastering enterprise-grade 
 
 ```
 .
-├── projects/          # Hands-on projects for each technology phase
-├── infra/             # Terraform modules and Helm charts
-├── docs/              # Architecture diagrams, notes, and documentation
-├── exercises/         # Weekly exercises
-├── .github/workflows/ # CI/CD pipeline definitions
-├── learning-plan.md   # Detailed 6-month learning roadmap
+â”œâ”€â”€ projects/          # Hands-on projects for each technology phase
+â”œâ”€â”€ infra/             # Terraform modules and Helm charts
+â”œâ”€â”€ docs/              # Architecture diagrams, notes, and documentation
+â”œâ”€â”€ exercises/         # Weekly exercises
+â”œâ”€â”€ .github/workflows/ # CI/CD pipeline definitions
+â”œâ”€â”€ learning-plan.md   # Detailed 6-month learning roadmap
 ```
 
 ## Current Progress
@@ -75,10 +75,11 @@ This repository represents my structured approach to mastering enterprise-grade 
 
 As projects are completed, they will be linked here with architecture diagrams and deployment documentation.
 
-### Month 1: Multi-Container Applications
+### Month 1: Multi-Container Applications (5 weeks)
 - Flask REST API with PostgreSQL backend
 - Docker Compose production patterns
 - Database persistence and health checks
+- **Lambda to Docker Migration**: Real-world serverless-to-container migration demonstrating reduced operational complexity and infrastructure portability
 
 ### Month 2: Cloud Infrastructure
 - Terraform-managed AWS infrastructure

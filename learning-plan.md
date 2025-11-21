@@ -156,10 +156,12 @@ Planned hours: 12 | Actual: ___
 
 #### Portfolio Narrative
 **"Lambda to Docker Migration"**: Demonstrates:
-- Cost optimization (scheduled containers vs per-invocation)
-- Reduced complexity (no layer management)
+- Reduced operational complexity (no layer management, easier debugging)
+- Improved developer experience (local testing, clearer workflows)
 - Infrastructure portability (runs anywhere Docker runs)
 - Understanding of when to use (and not use) serverless
+- *Note: While not a cost factor at this scale (free tier), the migration pattern is valuable for larger workloads*
+- *Future enhancement: Can be deployed as Kubernetes CronJob in Month 3-4*
 
 #### Reflection
 **What I learned:**  
