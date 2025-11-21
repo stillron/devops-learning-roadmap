@@ -46,12 +46,12 @@ This repository represents my structured approach to mastering enterprise-grade 
 
 ```
 .
-â”œâ”€â”€ projects/          # Hands-on projects for each technology phase
-â”œâ”€â”€ infra/             # Terraform modules and Helm charts
-â”œâ”€â”€ docs/              # Architecture diagrams, notes, and documentation
-â”œâ”€â”€ exercises/         # Weekly exercises
-â”œâ”€â”€ .github/workflows/ # CI/CD pipeline definitions
-â”œâ”€â”€ learning-plan.md   # Detailed 6-month learning roadmap
+├── projects/          # Hands-on projects for each technology phase
+├── infra/             # Terraform modules and Helm charts
+├── docs/              # Architecture diagrams, notes, and documentation
+├── exercises/         # Weekly exercises
+├── .github/workflows/ # CI/CD pipeline definitions
+├── learning-plan.md   # Detailed 6-month learning roadmap
 ```
 
 ## Current Progress
