@@ -155,7 +155,7 @@ Planned hours: 12 | Actual: ___
 - Screenshot of docker compose ps showing both containers
 
 #### Portfolio Narrative
-**"Lambda to Kubernetes Migration"**: Demonstrates:
+**"Lambda to Docker Migration"**: Demonstrates:
 - Cost optimization (scheduled containers vs per-invocation)
 - Reduced complexity (no layer management)
 - Infrastructure portability (runs anywhere Docker runs)
