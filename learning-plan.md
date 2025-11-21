@@ -8,7 +8,8 @@
 ---
 
 ## 📅 Month 1 – Python + Multi-Container Applications
-**Theme:** Python refresher + Docker Compose production patterns + PostgreSQL
+**Theme:** Python refresher + Docker Compose production patterns + PostgreSQL  
+**Note:** Month 1 extended to 5 weeks to include real-world migration project
 
 ---
 
@@ -56,7 +57,7 @@ Planned hours: 10 | Actual: 10
 
 **Key commands/patterns to remember:**
 
-    - Multi-stage: COPY --from-builder /app/.venv app/.venv
+    - Multi-stage: COPY --from=builder /app/.venv app/.venv
     - Flask in docker needs: --host=0.0.0.0
     - Python isolated mode: python -I
 
@@ -118,30 +119,91 @@ Planned hours: 12 | Actual: ___
 
 ---
 
-### Week 4 – Documentation + Architecture Diagrams ✅/🕐/❌
-Planned hours: 8 | Actual: ___  
+### Week 4 – Events Display Docker Migration ✅/🕐/❌
+Planned hours: 12 | Actual: ___  
+
+**Project Goal:** Migrate existing AWS Lambda application to containerized architecture, demonstrating cost optimization and reduced operational complexity.
 
 #### Tasks
-- [ ] Write comprehensive README.md with setup instructions
-- [ ] Create architecture diagram (Mermaid or draw.io)
-- [ ] Document API endpoints (consider using Swagger/OpenAPI)
-- [ ] Add troubleshooting section to README
-- [ ] Push to GitHub with proper .gitignore
-- [ ] Write a brief blog post or LinkedIn post about what you built
+- [ ] Set up project structure with pip-tools (requirements.in)
+- [ ] Add comprehensive docstrings to events.py and main.py
+- [ ] Create Dockerfile for events generator
+- [ ] Create docker-compose.yml with two services:
+  - Generator container (Python app)
+  - Uploader container (amazon/aws-cli)
+- [ ] Configure shared volume between containers
+- [ ] Set up .env file for AWS credentials and API tokens
+- [ ] Implement service dependencies (uploader waits for generator)
+- [ ] Apply production patterns from Week 3:
+  - Resource limits
+  - Proper logging
+  - Restart policies
+- [ ] Test locally: generate → upload to S3
+- [ ] Deploy to Proxmox with scheduled execution (cron or systemd timer)
+
+#### Resources
+- [Docker Compose depends_on](https://docs.docker.com/compose/compose-file/05-services/#depends_on)
+- [Docker Volumes](https://docs.docker.com/storage/volumes/)
+- [Amazon AWS CLI Docker Image](https://hub.docker.com/r/amazon/aws-cli)
+- [pip-tools Documentation](https://pip-tools.readthedocs.io/)
+
+#### Proof of Completion
+- docker-compose.yml with generator and uploader services
+- requirements.in showing only direct dependencies
+- HTML file successfully generated and uploaded to S3
+- Chromestick displaying updated content
+- Screenshot of docker compose ps showing both containers
+
+#### Portfolio Narrative
+**"Lambda to Kubernetes Migration"**: Demonstrates:
+- Cost optimization (scheduled containers vs per-invocation)
+- Reduced complexity (no layer management)
+- Infrastructure portability (runs anywhere Docker runs)
+- Understanding of when to use (and not use) serverless
+
+#### Reflection
+**What I learned:**  
+**What broke:**  
+**How this reinforced Week 3 patterns:**  
+
+---
+
+### Week 5 – Documentation + Architecture Diagrams ✅/🕐/❌
+Planned hours: 10 | Actual: ___  
+
+**Focus:** Document BOTH the Flask+PostgreSQL stack AND the Events Display project
+
+#### Tasks
+- [ ] **Flask+PostgreSQL Project:**
+  - Write comprehensive README.md with setup instructions
+  - Create architecture diagram (Mermaid or draw.io)
+  - Document API endpoints (consider using Swagger/OpenAPI)
+  - Add troubleshooting section
+- [ ] **Events Display Project:**
+  - Write README.md explaining Lambda → Docker migration
+  - Document the multi-container architecture
+  - Explain scheduling approach (cron/systemd timer)
+  - Include cost comparison (Lambda vs containerized)
+- [ ] Push both projects to GitHub with proper .gitignore
+- [ ] Write LinkedIn post about both projects and learning journey
+- [ ] Optional: Write blog post comparing serverless vs containerized architectures
 
 #### Resources
 - [Mermaid Diagrams for Markdown](https://mermaid.js.org/)
 - [Flask-RESTX for API docs](https://flask-restx.readthedocs.io/)
 - [README Best Practices](https://github.com/matiassingers/awesome-readme)
+- [Technical Writing Best Practices](https://developers.google.com/tech-writing)
 
 #### Proof of Completion
-- GitHub repo link with polished README
-- Architecture diagram showing Flask → Postgres network
-- Screenshot of running containers
+- Two GitHub repos with polished READMEs
+- Architecture diagrams for both projects
+- Screenshots of running containers for both stacks
+- LinkedIn post published
 
 #### Reflection
 **Wins:**  
 **Challenges:**  
+**Key differences between the two projects:**  
 **Next Month Focus:**  
 
 ---
@@ -151,7 +213,7 @@ Planned hours: 8 | Actual: ___
 
 ---
 
-### Week 5 – Terraform Fundamentals ✅/🕐/❌
+### Week 6 – Terraform Fundamentals ✅/🕐/❌
 Planned hours: 10 | Actual: ___  
 
 #### Tasks
@@ -179,7 +241,7 @@ Planned hours: 10 | Actual: ___
 
 ---
 
-### Week 6 – RDS PostgreSQL + Security Groups ✅/🕐/❌
+### Week 7 – RDS PostgreSQL + Security Groups ✅/🕐/❌
 Planned hours: 12 | Actual: ___  
 
 #### Tasks
@@ -206,7 +268,7 @@ Planned hours: 12 | Actual: ___
 
 ---
 
-### Week 7 – Deploy Flask App to EC2 + Connect to RDS ✅/🕐/❌
+### Week 8 – Deploy Flask App to EC2 + Connect to RDS ✅/🕐/❌
 Planned hours: 12 | Actual: ___  
 
 #### Tasks
@@ -232,7 +294,7 @@ Planned hours: 12 | Actual: ___
 
 ---
 
-### Week 8 – Terraform Best Practices + Remote State ✅/🕐/❌
+### Week 9 – Terraform Best Practices + Remote State ✅/🕐/❌
 Planned hours: 10 | Actual: ___  
 
 #### Tasks
@@ -266,7 +328,7 @@ Planned hours: 10 | Actual: ___
 
 ---
 
-### Week 9 – Kubernetes Core Concepts ✅/🕐/❌
+### Week 10 – Kubernetes Core Concepts ✅/🕐/❌
 Planned hours: 12 | Actual: ___  
 
 #### Tasks
@@ -294,7 +356,7 @@ Planned hours: 12 | Actual: ___
 
 ---
 
-### Week 10 – Deploy Flask App to Kubernetes ✅/🕐/❌
+### Week 11 – Deploy Flask App to Kubernetes ✅/🕐/❌
 Planned hours: 12 | Actual: ___  
 
 #### Tasks
@@ -322,7 +384,7 @@ Planned hours: 12 | Actual: ___
 
 ---
 
-### Week 11 – StatefulSets + Persistent Storage ✅/🕐/❌
+### Week 12 – StatefulSets + Persistent Storage ✅/🕐/❌
 Planned hours: 12 | Actual: ___  
 
 #### Tasks
@@ -349,7 +411,7 @@ Planned hours: 12 | Actual: ___
 
 ---
 
-### Week 12 – Introduction to Helm ✅/🕐/❌
+### Week 13 – Introduction to Helm ✅/🕐/❌
 Planned hours: 10 | Actual: ___  
 
 #### Tasks
@@ -381,7 +443,7 @@ Planned hours: 10 | Actual: ___
 
 ---
 
-### Week 13-14 – EKS Cluster with Terraform ✅/🕐/❌
+### Week 14-15 – EKS Cluster with Terraform ✅/🕐/❌
 Planned hours: 12 | Actual: ___  
 
 #### Tasks
@@ -408,7 +470,7 @@ Planned hours: 12 | Actual: ___
 
 ---
 
-### Week 15 – Deploy Full Stack to EKS ✅/🕐/❌
+### Week 16 – Deploy Full Stack to EKS ✅/🕐/❌
 Planned hours: 12 | Actual: ___  
 
 #### Tasks
@@ -434,7 +496,7 @@ Planned hours: 12 | Actual: ___
 
 ---
 
-### Week 16 – Monitoring + Cost Management ✅/🕐/❌
+### Week 17 – Monitoring + Cost Management ✅/🕐/❌
 Planned hours: 10 | Actual: ___  
 
 #### Tasks
@@ -466,7 +528,7 @@ Planned hours: 10 | Actual: ___
 
 ---
 
-### Week 17 – Go Fundamentals ✅/🕐/❌
+### Week 18 – Go Fundamentals ✅/🕐/❌
 Planned hours: 12 | Actual: ___  
 
 #### Tasks
@@ -493,7 +555,7 @@ Planned hours: 12 | Actual: ___
 
 ---
 
-### Week 18 – Go + PostgreSQL Integration ✅/🕐/❌
+### Week 19 – Go + PostgreSQL Integration ✅/🕐/❌
 Planned hours: 12 | Actual: ___  
 
 #### Tasks
@@ -520,7 +582,7 @@ Planned hours: 12 | Actual: ___
 
 ---
 
-### Week 19 – Database Migrations ✅/🕐/❌
+### Week 20 – Database Migrations ✅/🕐/❌
 Planned hours: 10 | Actual: ___  
 
 #### Tasks
@@ -547,7 +609,7 @@ Planned hours: 10 | Actual: ___
 
 ---
 
-### Week 20 – Deploy Go App to Kubernetes ✅/🕐/❌
+### Week 21 – Deploy Go App to Kubernetes ✅/🕐/❌
 Planned hours: 10 | Actual: ___  
 
 #### Tasks
@@ -578,7 +640,7 @@ Planned hours: 10 | Actual: ___
 
 ---
 
-### Week 21 – GitHub Actions for Docker ✅/🕐/❌
+### Week 22 – GitHub Actions for Docker ✅/🕐/❌
 Planned hours: 10 | Actual: ___  
 
 #### Tasks
@@ -605,7 +667,7 @@ Planned hours: 10 | Actual: ___
 
 ---
 
-### Week 22 – Terraform + Helm CD Pipeline ✅/🕐/❌
+### Week 23 – Terraform + Helm CD Pipeline ✅/🕐/❌
 Planned hours: 12 | Actual: ___  
 
 #### Tasks
@@ -631,7 +693,7 @@ Planned hours: 12 | Actual: ___
 
 ---
 
-### Week 23 – Database Automation + Backups ✅/🕐/❌
+### Week 24 – Database Automation + Backups ✅/🕐/❌
 Planned hours: 10 | Actual: ___  
 
 #### Tasks
@@ -658,7 +720,7 @@ Planned hours: 10 | Actual: ___
 
 ---
 
-### Week 24 – Portfolio Polish + Documentation ✅/🕐/❌
+### Week 25 – Portfolio Polish + Documentation ✅/🕐/❌
 Planned hours: 10 | Actual: ___  
 
 #### Tasks
@@ -715,4 +777,4 @@ This portfolio demonstrates the skills required for senior infrastructure/DevOps
 
 **Progress Tracking:** Mark each week ✅ complete, 🕐 in progress, or ❌ blocked.  
 **Portfolio Focus:** Every project should have screenshots, diagrams, and thorough documentation.  
-**Interview Ready:** By month 6, you'll have 4-5 production-quality projects to discuss in technical interviews.
+**Interview Ready:** By month 6, you'll have 5-6 production-quality projects to discuss in technical interviews, including a real-world Lambda to containerized architecture migration.
