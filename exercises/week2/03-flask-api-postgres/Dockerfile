@@ -20,4 +20,4 @@ ENV PATH="/app/.venv/bin:$PATH"
 
 EXPOSE 5000
 
-CMD ["python", "-I", "-m", "flask", "run", "--host=0.0.0.0"]
+CMD ["granian", "--host", "0.0.0.0", "--port", "5000", "--interface", "wsgi", "app:app"]
