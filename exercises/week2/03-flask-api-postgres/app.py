@@ -3,6 +3,17 @@ from db import pool
 
 app = Flask(__name__)
 
+def build_container(r):
+    container = {}
+    container['name'] = r.json.get('name')
+    container['image'] = r.json.get('image')
+    container['ports'] = r.json.get('ports')
+    container['status'] = r.json.get('status')
+    if not container['name'] or not container['image'] or not container['ports'] or not container['status']:
+        return None
+    else:
+        return container
+
 @app.get("/containers")
 def get_all_containers():
     with pool.connection() as conn:
@@ -23,12 +34,8 @@ def get_container(id):
 
 @app.post("/container")
 def insert_container():
-    container = {}
-    container['name'] = request.json.get('name')
-    container['image'] = request.json.get('image')
-    container['ports'] = request.json.get('ports')
-    container['status'] = request.json.get('status')
-    if not container['name'] or not container['image'] or not container['ports'] or not container['status']:
+    container = build_container(request)
+    if not container:
         return {"message": "Failed", "err": "Container data must include name, image, ports, and status"}, 400
     
 
@@ -37,7 +44,7 @@ def insert_container():
             cur.execute("""
             INSERT INTO containers (name, image, ports, status) 
             VALUES (%s, %s, %s, %s)
-            RETURNING name, image, ports, status;
+            RETURNING id, name, image, ports, status;
             """,
             (container['name'], container['image'], container['ports'], container['status']))
 
@@ -47,3 +54,45 @@ def insert_container():
         return {"message": "Container created", "container": result}, 201
     else:
         return {"message": "Failed", "err": f"Failed to insert container data {container}"}, 500
+
+@app.put("/container/<int:id>")
+def update_container(id):
+    container = build_container(request)
+    if not container:
+        return {"message": "Failed", "err": "Container data must include name, image, ports, and status"}, 400
+
+    with pool.connection() as conn:
+        with conn.cursor() as cur:
+            cur.execute("""
+            UPDATE containers
+            SET name = %s,
+                image = %s,
+                ports = %s,
+                status = %s
+            WHERE id = %s
+            RETURNING id, name, image, ports, status;
+            """,
+            (container['name'], container['image'], container['ports'], container['status'], id))
+
+            result = cur.fetchone()
+    if result:
+        return {"message": "Container updated", "container": result}, 200
+    else:
+        return {"message": "Failed", "err": f"Container id {id} not found"}, 404
+
+@app.delete("/container/<int:id>")
+def delete_container(id):
+    with pool.connection() as conn:
+        with conn.cursor() as cur:
+            cur.execute("""
+            DELETE FROM containers
+            WHERE id = %s
+            RETURNING id, name, image, ports, status;
+            """,
+            (id,))
+    
+            result = cur.fetchone()
+    if result:
+        return {"message": "Container deleted", "container": result}, 200
+    else:
+        return {"message": "Failed", "err": f"Container id {id} not found"}, 404
