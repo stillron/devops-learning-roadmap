@@ -64,7 +64,7 @@ Planned hours: 10 | Actual: 10
 ---
 
 ### Week 2 – Docker Compose + PostgreSQL Integration ✅/🕐/❌
-Planned hours: 12 | Actual: 12.5
+Planned hours: 12 | Actual: 13
 
 #### Tasks
 - [x] Install PostgreSQL locally and practice basic queries
@@ -86,8 +86,34 @@ Planned hours: 12 | Actual: 12.5
 
 #### Reflection
 **What I learned:**  
+- Connected Flask to PostgreSQL using psycopg3 with connection pooling for production-ready database access. 
+- Learned PostgreSQL permission model (database vs schema privileges - even with GRANT ALL on database, still need CREATE on schema). 
+- Discovered RETURNING keyword for getting feedback from INSERT/UPDATE/DELETE operations. 
+- Implemented proper REST API status codes (200, 201, 400, 404). Practiced CRUD operations via curl. 
+- Automated database initialization with init.sql in Docker's entrypoint directory. 
+- Worked with PostgreSQL arrays (INTEGER[]) and custom ENUM types. 
+- Deployed with Granian WSGI server instead of Flask's development server.
+
 **What broke:**  
-**Next actions:**  
+- Missing psycopg[binary] in requirements.txt caused "no pq wrapper available" errors in Docker. 
+- Hit permission denied creating types/tables until I granted CREATE ON SCHEMA public. 
+- Docker Compose initially failed because I forgot env_file configuration. 
+- Granian defaulted to RSGI mode instead of WSGI (needed --interface wsgi flag). 
+- Volume mount path confusion between /var/lib/postgres and /var/lib/postgresql.
+
+**What I'll improve next week:**  
+- Start with brief review of prior week's concepts before adding new complexity. 
+- Continue using small test exercises to isolate learning (worked extremely well this week). 
+- When tools feel abstract, do things manually first to understand what's actually happening underneath. 
+- Break down complex integrations into smaller steps when feeling muddled.
+
+**Key commands/patterns to remember:**  
+- Connection pooling: `with pool.connection() as conn:`
+- PostgreSQL arrays: `'{80, 443}'` in SQL, `[80, 443]` in Python/JSON
+- RETURNING clause: `INSERT ... RETURNING id, name`
+- Volume mount: `app-db:/var/lib/postgresql` (changed in PG 18+)
+- Granian production server: `granian --interface wsgi --host 0.0.0.0 app:app`
+- Docker Compose: `docker compose up -d` / `docker compose down`
 
 ---
 
