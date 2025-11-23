@@ -115,6 +115,31 @@ Planned hours: 12 | Actual: 13
 - Granian production server: `granian --interface wsgi --host 0.0.0.0 app:app`
 - Docker Compose: `docker compose up -d` / `docker compose down`
 
+**Additional Learning: Dynamic SQL with PATCH endpoints**
+
+Implemented a PATCH endpoint requiring dynamic query construction with `psycopg.sql` module:
+```python
+# Build SET clauses for each field to update
+set_clauses = []
+values = []
+for key, value in update_data.items():
+    set_clauses.append(sql.SQL("{} = %s").format(sql.Identifier(key)))
+    values.append(value)
+
+# Join into single SQL composable object
+fields = sql.SQL(', ').join(set_clauses)
+
+# Insert into query template
+query = sql.SQL("UPDATE containers SET {} WHERE id = %s").format(fields)
+
+# Execute with unpacked values
+cur.execute(query, (*values, id))
+```
+
+**Key insight:** `sql.SQL(', ').join()` is a method of the SQL object, not Python's string join. This creates a single composable SQL object from a list of SQL fragments.
+
+**Why this matters:** Dynamic SQL construction is essential when you don't know which fields will be updated ahead of time - common pattern for PATCH operations and dynamic WHERE clauses.
+
 ---
 
 ### Week 3 – Production-Ready Multi-Container Stack ✅/🕐/❌
