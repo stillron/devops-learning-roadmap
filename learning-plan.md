@@ -145,28 +145,76 @@ cur.execute(query, (*values, id))
 ### Week 3 – Production-Ready Multi-Container Stack ✅/🕐/❌
 Planned hours: 12 | Actual: ___  
 
-#### Tasks
-- [ ] Add pgAdmin or Adminer to docker-compose.yml for database management
-- [ ] Implement healthchecks for both Flask and Postgres
-- [ ] Add resource limits (memory, CPU)
-- [ ] Configure proper logging (JSON format for Flask)
-- [ ] Add restart policies
-- [ ] Test failure scenarios (kill Postgres, watch Flask handle it)
+**Theme:** Production patterns + reinforcing dynamic SQL from Week 2 PATCH work
 
-#### Resources
+---
+
+#### Phase 1: Health Checks & Monitoring
+**Focus:** Build a production health endpoint, then add Docker healthchecks
+
+**Tasks:**
+- [ ] Create `/health` endpoint in Flask with multiple check types:
+  - App liveness check
+  - Database connection check
+  - Database response time check
+- [ ] Add dynamic query parameter support: `GET /health?checks=db,app`
+  - Reinforces PATCH patterns: build response dict dynamically based on params
+  - Practice the `for key, value in items()` pattern from Week 2
+- [ ] Test health endpoint with curl (different param combinations)
+- [ ] Add HEALTHCHECK directive to Flask Dockerfile
+- [ ] Add healthcheck to compose.yml for both Flask and Postgres
+- [ ] Observe health status with `docker compose ps`
+
+**Resources:**
 - [Compose Healthcheck](https://docs.docker.com/compose/compose-file/05-services/#healthcheck)
+- [Dockerfile HEALTHCHECK](https://docs.docker.com/engine/reference/builder/#healthcheck)
+- Your Week 2 PATCH endpoint code (similar dynamic pattern)
+
+---
+
+#### Phase 2: Resource Management & Restart Policies
+
+**Tasks:**
+- [ ] Add resource limits to compose.yml (memory, CPU) for both services
+- [ ] Add restart policies (restart: unless-stopped)
+- [ ] Test resource constraints work as expected
+- [ ] Document resource allocation decisions
+
+**Resources:**
 - [Docker Resource Constraints](https://docs.docker.com/config/containers/resource_constraints/)
+- [Compose Restart Policies](https://docs.docker.com/compose/compose-file/05-services/#restart)
+
+---
+
+#### Phase 3: Production Patterns & Failure Testing
+
+**Tasks:**
+- [ ] Add pgAdmin as third service in compose.yml
+- [ ] Configure proper logging (JSON format for Flask)
+- [ ] Test failure scenarios:
+  - Kill Postgres container, watch Flask health endpoint respond
+  - Watch Docker restart failed containers
+  - Verify pgAdmin reconnects after failures
+- [ ] Document failure recovery behavior
+
+**Resources:**
 - [pgAdmin Docker](https://hub.docker.com/r/dpage/pgadmin4)
+- [Python JSON Logging](https://docs.python.org/3/library/logging.html#logging.Formatter)
+
+---
 
 #### Proof of Completion
+- Working `/health` endpoint with dynamic check selection
 - Screenshot of pgAdmin connected to database
-- Healthcheck status in `docker compose ps`
-- Logs showing graceful handling of database connection issues
+- `docker compose ps` showing health status for all services
+- Logs showing graceful handling of database failures and recovery
+- Documentation of failure scenarios and recovery behavior
 
 #### Reflection
 **What I learned:**  
 **What broke:**  
-**Next actions:**  
+**How PATCH patterns applied to health checks:**  
+**Next actions:** 
 
 ---
 
