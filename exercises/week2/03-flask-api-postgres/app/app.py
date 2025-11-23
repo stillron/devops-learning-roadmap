@@ -1,4 +1,5 @@
 from flask import Flask, request
+from psycopg import sql
 from db import pool
 
 app = Flask(__name__)
@@ -79,6 +80,44 @@ def update_container(id):
         return {"message": "Container updated", "container": result}, 200
     else:
         return {"message": "Failed", "err": f"Container id {id} not found"}, 404
+
+@app.patch("/container/<int:id>")
+def patch_container(id):
+    update_data = request.json
+
+    if not update_data:
+        return {"message": "Failed", "err": "No fields provided to update"}, 400
+
+    allowed_keys = True
+
+    for k in update_data.keys():
+        if k not in ('name', 'image', 'ports', 'status'):
+            allowed_keys = False
+
+    if not allowed_keys:
+        return {"message": "Failed", "err": "Keys can only be 'name', 'image', 'ports', or 'status'"}
+
+    set_clauses = []
+    values = []
+
+    for key, value in update_data.items():
+        set_clauses.append(sql.SQL("{} = %s").format(sql.Identifier(key)))
+        values.append(value)
+
+    fields = sql.SQL(', ').join(set_clauses)
+    query = sql.SQL("UPDATE containers SET {} WHERE id = %s RETURNING id, name, image, ports, status;").format(fields)
+
+    with pool.connection() as conn:
+        with conn.cursor() as cur:
+            cur.execute(query, (*values, id))
+
+            result = cur.fetchone()
+        
+        if result:
+            return{"message": "Container patched", "container": result}, 200
+        else:
+            return{"message": "Failed", "err": f"Container id {id} not found"}, 404
+
 
 @app.delete("/container/<int:id>")
 def delete_container(id):
