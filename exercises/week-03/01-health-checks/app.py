@@ -1,5 +1,6 @@
 from flask import Flask, request
 import time
+from datetime import datetime
 
 app = Flask(__name__)
 
@@ -7,8 +8,11 @@ def check_app():
     return {"status": "ok"}
 
 def check_database():
+    start_time = time.time()
     time.sleep(0.01)
-    return {"status": "ok", "connected": True}
+    end_time = time.time()
+    duration = end_time - start_time
+    return {"status": "ok", "connected": True, "execution_time": duration }
 
 check_functions = {
     'app': check_app,
@@ -41,5 +45,7 @@ def get_health():
         response['status'] = 'healthy'
     else:
         response['status'] = 'unhealthy'
+    
+    response['timestamp'] = datetime.now().isoformat()
     
     return response
