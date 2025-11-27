@@ -183,11 +183,15 @@ def get_health():
         if v.get('status') != 'ok':
             is_healthy = False
 
-    if is_healthy:
-        response['status'] = 'healthy'
-    else:
-        response['status'] = 'unhealthy'
-
     response['timestamp'] = datetime.now().isoformat()
 
-    return response
+    if is_healthy:
+        response['status'] = 'healthy'
+        return response, 200
+    else:
+        response['status'] = 'unhealthy'
+        return response, 503
+
+    
+
+    
