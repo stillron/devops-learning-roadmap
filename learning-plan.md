@@ -143,7 +143,7 @@ cur.execute(query, (*values, id))
 ---
 
 ### Week 3 – Production-Ready Multi-Container Stack ✅/🕐/❌
-Planned hours: 12 | Actual: 4  
+Planned hours: 12 | Actual: 8
 
 **Theme:** Production patterns + reinforcing dynamic SQL from Week 2 PATCH work
 
@@ -161,9 +161,9 @@ Planned hours: 12 | Actual: 4
   - Reinforces PATCH patterns: build response dict dynamically based on params
   - Practice the `for key, value in items()` pattern from Week 2
 - [x] Test health endpoint with curl (different param combinations)
-- [ ] Add HEALTHCHECK directive to Flask Dockerfile
+- [x] Add HEALTHCHECK directive to Flask Dockerfile
 - [ ] Add healthcheck to compose.yml for both Flask and Postgres
-- [ ] Observe health status with `docker compose ps`
+- [x] Observe health status with `docker compose ps`
 
 **Resources:**
 - [Compose Healthcheck](https://docs.docker.com/compose/compose-file/05-services/#healthcheck)
