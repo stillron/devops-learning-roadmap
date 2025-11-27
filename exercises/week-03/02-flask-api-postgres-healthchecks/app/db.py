@@ -13,7 +13,7 @@ db_user = os.getenv('POSTGRES_USER')
 conn_string = f"postgresql://{db_user}:{db_password}@{db_host}/{db_name}"
 
 try:
-    pool = ConnectionPool(conninfo=conn_string, open=True, kwargs={"row_factory": dict_row})
+    pool = ConnectionPool(conninfo=conn_string, open=True, timeout=2, kwargs={"row_factory": dict_row})
 
 except Exception as error:
     print("Error while connecting to PostgreSQL", error)
