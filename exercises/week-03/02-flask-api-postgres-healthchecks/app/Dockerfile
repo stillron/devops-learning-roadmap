@@ -20,7 +20,8 @@ COPY ./app.py .
 
 ENV PATH="/app/.venv/bin:$PATH"
 
-HEALTHCHECK --interval=5s --timeout=3s CMD curl -f http://localhost:5000/health || exit 1
+HEALTHCHECK --interval=5s --timeout=3s --retries=3 \
+ CMD curl -f http://localhost:5000/health || exit 1
 
 EXPOSE 5000
 
