@@ -1,6 +1,8 @@
 from flask import Flask, request
 from psycopg import sql
 from db import pool
+import time
+from datetime import datetime
 
 app = Flask(__name__)
 
@@ -14,6 +16,22 @@ def build_container(r):
         return None
     else:
         return container
+
+def check_app():
+    return {"status": "ok"}
+
+def check_database():
+    start_time = time.time()
+    with pool.connection() as conn:
+        with conn.cursor() as cur:
+            result = cur.execute("SELECT NOW()").fetchone()
+        if result:
+            end_time = time.time()
+            duration = (end_time - start_time) * 1000
+            return {"status": "ok", "connected": True, "execution_time": f"{duration:.2f} ms" }
+        else:
+            return {"status": "Failed", "connected": False}
+
 
 @app.get("/containers")
 def get_all_containers():
@@ -135,3 +153,38 @@ def delete_container(id):
         return {"message": "Container deleted", "container": result}, 200
     else:
         return {"message": "Failed", "err": f"Container id {id} not found"}, 404
+
+@app.get("/health")
+def get_health():
+    check_functions = {
+    'app': check_app,
+    'db': check_database
+    }
+
+    available_checks = {'app', 'db'}
+    params = request.args.get('checks')
+    if params:
+        requested_checks = set((params.split(',')))
+        checks = available_checks.intersection(requested_checks)
+    else:
+        checks = available_checks
+
+    response = {"checks": {}}
+    for check_name in checks:
+        func = check_functions[check_name]
+        response['checks'][check_name] = func()
+
+    is_healthy = True
+
+    for v in response['checks'].values():
+        if v.get('status') != 'ok':
+            is_healthy = False
+
+    if is_healthy:
+        response['status'] = 'healthy'
+    else:
+        response['status'] = 'unhealthy'
+
+    response['timestamp'] = datetime.now().isoformat()
+
+    return response
