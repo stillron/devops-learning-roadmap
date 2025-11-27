@@ -22,15 +22,18 @@ def check_app():
 
 def check_database():
     start_time = time.time()
-    with pool.connection() as conn:
-        with conn.cursor() as cur:
-            result = cur.execute("SELECT NOW()").fetchone()
-        if result:
-            end_time = time.time()
-            duration = (end_time - start_time) * 1000
-            return {"status": "ok", "connected": True, "execution_time": f"{duration:.2f} ms" }
-        else:
-            return {"status": "Failed", "connected": False}
+    try:
+        with pool.connection() as conn:
+            with conn.cursor() as cur:
+                result = cur.execute("SELECT NOW()").fetchone()
+            if result:
+                end_time = time.time()
+                duration = (end_time - start_time) * 1000
+                return {"status": "ok", "connected": True, "execution_time": f"{duration:.2f} ms" }
+            else:
+                return {"status": "Failed", "connected": False}
+    except:
+        return {"status": "Failed", "connected": False}
 
 
 @app.get("/containers")
