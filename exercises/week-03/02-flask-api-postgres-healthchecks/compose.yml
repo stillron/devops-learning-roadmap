@@ -43,9 +43,22 @@ services:
           cpus: '0.50'
           memory: 200M
 
+  pgadmin:
+    image: dpage/pgadmin4
+    networks: 
+      - flask-app-network
+    ports:
+      - 5051:80
+    volumes:
+      - pgadmin:/var/lib/pgadmin
+    env_file:
+      - .env
+    restart: unless-stopped
+
 
 networks:
   flask-app-network:
 
 volumes:
   app-db:
+  pgadmin:
