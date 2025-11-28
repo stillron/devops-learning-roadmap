@@ -10,6 +10,11 @@ services:
       - .env
     depends_on:
       - db
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:5000/health || exit 1"]
+      interval: 5s
+      timeout: 3s
+      retries: 3
 
 
   db:
@@ -20,6 +25,11 @@ services:
       - app-db:/var/lib/postgresql
     env_file:
       - .env
+    healthcheck:
+      test: ["CMD", "pg_isready"]
+      interval: 5s
+      timeout: 3s
+      retries: 3
 
 networks:
   flask-app-network:
