@@ -162,7 +162,7 @@ Planned hours: 12 | Actual: 8
   - Practice the `for key, value in items()` pattern from Week 2
 - [x] Test health endpoint with curl (different param combinations)
 - [x] Add HEALTHCHECK directive to Flask Dockerfile
-- [ ] Add healthcheck to compose.yml for both Flask and Postgres
+- [x] Add healthcheck to compose.yml for both Flask and Postgres
 - [x] Observe health status with `docker compose ps`
 
 **Resources:**
