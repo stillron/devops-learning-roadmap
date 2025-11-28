@@ -175,10 +175,10 @@ Planned hours: 12 | Actual: 8
 #### Phase 2: Resource Management & Restart Policies
 
 **Tasks:**
-- [ ] Add resource limits to compose.yml (memory, CPU) for both services
-- [ ] Add restart policies (restart: unless-stopped)
-- [ ] Test resource constraints work as expected
-- [ ] Document resource allocation decisions
+- [x] Add resource limits to compose.yml (memory, CPU) for both services
+- [x] Add restart policies (restart: unless-stopped)
+- [x] Test resource constraints work as expected
+- [x] Document resource allocation decisions
 
 **Resources:**
 - [Docker Resource Constraints](https://docs.docker.com/config/containers/resource_constraints/)
