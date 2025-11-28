@@ -15,6 +15,12 @@ services:
       interval: 5s
       timeout: 3s
       retries: 3
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 300M
 
 
   db:
@@ -30,6 +36,13 @@ services:
       interval: 5s
       timeout: 3s
       retries: 3
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 200M
+
 
 networks:
   flask-app-network:
