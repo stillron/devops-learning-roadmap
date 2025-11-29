@@ -3,6 +3,28 @@ from psycopg import sql
 from db import pool
 import time
 from datetime import datetime
+import logging
+from pythonjsonlogger.json import JsonFormatter
+
+# Create a logger
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.DEBUG)
+
+# Create a handler
+logHandler = logging.StreamHandler()
+
+# Create a json formatter
+logFormatter = JsonFormatter('%(asctime)s %(levelname)s %(name)s %(pathname)s %(funcName)s %(lineno)d %(message)s')
+
+# Attach formatter to handler
+logHandler.setFormatter(logFormatter)
+
+# Attach handler to the logger
+logger.addHandler(logHandler)
+
+
+
+
 
 app = Flask(__name__)
 
@@ -187,11 +209,18 @@ def get_health():
 
     if is_healthy:
         response['status'] = 'healthy'
+        extra_info = {}
+        if 'db' in response['checks']:
+            extra_info['db'] = response['checks']['db']
+        logger.debug('The app is healthy', extra=extra_info)
         return response, 200
     else:
         response['status'] = 'unhealthy'
+        extra_info = {}
+        if 'app' in response['checks']:
+            extra_info['app'] = response['checks']['app']
+        if 'db' in response['checks']:
+            extra_info['db'] = response['checks']['db']
+        logger.warning('The app is unhealthy', extra=extra_info)
         return response, 503
-
-    
-
     
