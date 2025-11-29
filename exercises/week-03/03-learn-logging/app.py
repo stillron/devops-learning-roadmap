@@ -4,7 +4,7 @@ from pythonjsonlogger import jsonlogger
 
 # Create a JSON formatter
 logHandler = logging.StreamHandler()
-formatter = jsonlogger.JsonFormatter('%(asctime)s %(levelname)s %(name)s %(message)s')
+formatter = jsonlogger.JsonFormatter('%(asctime)s %(levelname)s %(name)s %(pathname)s %(funcName)s %(lineno)d %(message)s')
 logHandler.setFormatter(formatter)
 
 # Setup the logger
