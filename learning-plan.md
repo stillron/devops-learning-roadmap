@@ -191,7 +191,7 @@ Planned hours: 12 | Actual: 12
   - Kill Postgres container, watch Flask health endpoint respond
   - Watch Docker restart failed containers
   - Verify pgAdmin reconnects after failures
-- [ ] Document failure recovery behavior
+- [x] Document failure recovery behavior
 
 **Resources:**
 - [pgAdmin Docker](https://hub.docker.com/r/dpage/pgadmin4)
@@ -207,10 +207,39 @@ Planned hours: 12 | Actual: 12
 - Documentation of failure scenarios and recovery behavior
 
 #### Reflection
-**What I learned:**  
-**What broke:**  
-**How PATCH patterns applied to health checks:**  
-**Next actions:** 
+**What I learned:**
+- **Python logging architecture** - Learned how logging actually works: Logger (creates messages) + Handler (where they go) + Formatter (what they look like). Implemented JSON logging with defensive programming to handle missing data gracefully.
+
+- **Production Docker patterns** - Added Docker HEALTHCHECK directives, restart policies (unless-stopped for production services that survive reboots), and resource limits based on actual container usage.
+
+- **Health endpoint design** - Built `/health` endpoint with dynamic query parameters using sets to filter checks. Used dictionary mapping (`check_functions`) to call different check functions dynamically.
+
+- **Defensive programming** - Learned to test edge cases and handle missing data (like when `?checks=app` is requested but code assumes `db` exists). Used try/except for graceful error handling in database checks.
+
+- **Python skills refreshed** - Worked with sets for intersection logic, gathered timing information with `time.time()`, learned about pip-tools for dependency management.
+
+- **Learning approach validated** - When overwhelmed by logging complexity, stepped back to create isolated exercise (`/03-learn-logging/`), learned concepts piece by piece, then applied to real project. This pattern works well for me. 
+
+**What broke:**
+
+- My healthchecks weren't working originally because I wasn't making sure that I was getting a 0 or 1 for exit codes
+- I'd forgotten to send server responses so the healthchecks were not reliable
+- I assumed there would always be db output for the logs and that caused the program to crash when I tried to log non-existent data
+- I mistakenly thought that a restart policy of on-failure would still restart on a reboot
+- Created a logger without a handler in the isolated logging exercise and got no output - learned that Logger creates messages but needs a Handler to actually send them somewhere
+- Initially tried to use `asctime` in JSON logs but it was missing timestamp and log level because I didn't specify the format string for JsonFormatter  
+
+**How PATCH patterns applied to health checks:**
+
+Week 2's PATCH endpoint taught me to build things dynamically based on what data is present - iterating through `update_data.items()` to construct SQL queries. Applied the same pattern in Week 3's health checks: iterate through requested checks and build the response dictionary dynamically. The core pattern is the same: `for key, value in items()` to process whatever data exists rather than assuming a fixed structure.
+
+**Next actions:**
+
+- Complete Week 3 reflection and push to GitHub
+- Start Week 4: Lambda → Docker migration project  
+- Apply pip-tools for dependency management from the start
+- Continue using defensive programming patterns (check if data exists before accessing)
+- Use isolated exercises when encountering new complex concepts
 
 ---
 
