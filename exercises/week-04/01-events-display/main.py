@@ -1,12 +1,9 @@
-from dotenv import dotenv_values
+import os
 import requests
 import random
 from datetime import datetime
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 from events import Event
-
-# Get env values
-config = dotenv_values('.env')
 
 # Setup Jinja2 Environment
 env = Environment(
@@ -18,10 +15,14 @@ env = Environment(
 
 template = env.get_template("impress.j2")
 
+client_id = os.environ['API_CLIENT_ID']
+client_secret = os.environ['API_TOKEN']
+
 r = requests.post('https://leblibrary.libcal.com/1.1/oauth/token',
-                  json={"client_id": config['api-client-id'],
-                        "client_secret": config['api-token'],
+                  json={"client_id": client_id,
+                        "client_secret": client_secret,
                         "grant_type": "client_credentials"})
+
 
 access_token = r.json().get('access_token')
 
