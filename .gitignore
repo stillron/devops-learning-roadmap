@@ -27,3 +27,6 @@ Thumbs.db
 # IDE
 .vscode/
 .idea/
+
+# Week 4 - Events Display generated output
+exercises/week-04/01-events-display/output/index.html
