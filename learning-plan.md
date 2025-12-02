@@ -244,14 +244,14 @@ Week 2's PATCH endpoint taught me to build things dynamically based on what data
 ---
 
 ### Week 4 – Events Display Docker Migration ✅/🕐/❌
-Planned hours: 12 | Actual: ___  
+Planned hours: 12 | Actual: 3  
 
 **Project Goal:** Migrate existing AWS Lambda application to containerized architecture, demonstrating cost optimization and reduced operational complexity.
 
 #### Tasks
-- [ ] Set up project structure with pip-tools (requirements.in)
+- [x] Set up project structure with pip-tools (requirements.in)
 - [ ] Add comprehensive docstrings to events.py and main.py
-- [ ] Create Dockerfile for events generator
+- [x] Create Dockerfile for events generator
 - [ ] Create docker-compose.yml with two services:
   - Generator container (Python app)
   - Uploader container (amazon/aws-cli)
