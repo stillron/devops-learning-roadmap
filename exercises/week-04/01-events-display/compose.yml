@@ -1,0 +1,34 @@
+name: events-display
+services:
+  generator:
+    build: .
+    volumes:
+      - ./output:/app/output
+    environment:
+      - API_TOKEN=${API_TOKEN}
+      - API_CLIENT_ID=${API_CLIENT_ID}
+
+  uploader:
+    image: amazon/aws-cli
+    volumes:
+    - ./output:/aws/output
+    environment:
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+      - AWS_REGION=${AWS_REGION}
+      - AWS_S3_BUCKET=${AWS_S3_BUCKET}
+    command: s3 sync /aws/output/ s3://${AWS_S3_BUCKET}/
+    depends_on:
+      generator:
+        condition: service_completed_successfully
+
+  invalidator:
+    image: amazon/aws-cli
+    environment:
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+      - AWS_DISTRIBUTION_ID=${AWS_DISTRIBUTION_ID}
+    command: cloudfront create-invalidation --distribution-id ${AWS_DISTRIBUTION_ID} --paths "/*"
+    depends_on:
+      uploader:
+        condition: service_completed_successfully
