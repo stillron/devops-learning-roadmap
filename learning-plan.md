@@ -250,19 +250,18 @@ Planned hours: 12 | Actual: 3
 
 #### Tasks
 - [x] Set up project structure with pip-tools (requirements.in)
-- [ ] Add comprehensive docstrings to events.py and main.py
 - [x] Create Dockerfile for events generator
-- [ ] Create docker-compose.yml with two services:
+- [x] Create docker-compose.yml with two services:
   - Generator container (Python app)
   - Uploader container (amazon/aws-cli)
-- [ ] Configure shared volume between containers
-- [ ] Set up .env file for AWS credentials and API tokens
-- [ ] Implement service dependencies (uploader waits for generator)
-- [ ] Apply production patterns from Week 3:
+- [x] Configure shared volume between containers
+- [x] Set up .env file for AWS credentials and API tokens
+- [x] Implement service dependencies (uploader waits for generator)
+- [x] Apply production patterns from Week 3:
   - Resource limits
   - Proper logging
   - Restart policies
-- [ ] Test locally: generate → upload to S3
+- [x] Test locally: generate → upload to S3
 - [ ] Deploy to Proxmox with scheduled execution (cron or systemd timer)
 
 #### Resources
