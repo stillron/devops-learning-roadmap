@@ -1,9 +1,18 @@
 import os
+import logging
+import sys
 import requests
 import random
 from datetime import datetime
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 from events import Event
+
+# Set up logging
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s'
+)
+logger = logging.getLogger(__name__)
 
 # Setup Jinja2 Environment
 env = Environment(
@@ -36,7 +45,8 @@ unsorted_events = kilton_events['events'] + leb_events['events'] + outreach_even
 
 Event.add_events(unsorted_events)
 Event.arrange()
-
+arrangement = Event.arrangement
+logger.info(f"Using arrangement: {arrangement}")
 output = template.render({"events": Event.list_events()})
 
 with open('output/index.html', 'w') as writer:
