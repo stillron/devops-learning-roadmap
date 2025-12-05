@@ -60,8 +60,7 @@ unsorted_events = kilton_events['events'] + leb_events['events'] + outreach_even
 logger.info(f"Total events: {len(unsorted_events)}")
 
 Event.add_events(unsorted_events)
-Event.arrange()
-arrangement = Event.arrangement
+arrangement = Event.arrange()
 logger.info(f"Using arrangement: {arrangement}")
 
 #Render

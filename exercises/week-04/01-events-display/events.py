@@ -16,7 +16,6 @@ class Event:
     def __init__(self, event: dict):
         # Event Metadata
         self.id = event.get("id")
-        self.arrangment = None
 
         # Event Data
         self.title = event.get("title")
@@ -55,12 +54,11 @@ class Event:
             cls.ring_around, cls.ring_twist, cls.clusters
             ]
         make_arrangement = random.choice(arrangements)
-        # print(make_arrangement)
         make_arrangement()
+        return make_arrangement.__name__
 
     @classmethod
     def vertical_chain(cls):
-        cls.arrangement = "vertical_chain"
         cls.xcor = cls.ycor = cls.zcor = cls.rotate_y = 0
 
         for event in cls.events:
@@ -73,7 +71,6 @@ class Event:
 
     @classmethod
     def ring_around(cls):
-        cls.arrangement = "ring_around"
         cls.xcor = cls.ycor = cls.zcor = cls.rotate_z = 0
 
         for event in cls.events:
@@ -86,7 +83,6 @@ class Event:
 
     @classmethod
     def ring_twist(cls):
-        cls.arrangement = "ring_twist"
         cls.xcor = cls.ycor = cls.zcor = cls.rotate_z = cls.rotate_y= 0
 
         for event in cls.events:
@@ -101,7 +97,6 @@ class Event:
 
     @classmethod
     def horizontal_chain(cls):
-        cls.arrangement = "horizontal_chain"
         cls.xcor = cls.ycor = cls.zor = cls.rotate_x = 0
 
         for event in cls.events:
@@ -114,7 +109,6 @@ class Event:
 
     @classmethod
     def swoop_around(cls):
-        cls.arrangement = "swoop_around"
         cls.xcor = cls.ycor = cls.zor = cls.rotate_y = cls.rotate_x = 0
 
         for event in cls.events:
@@ -129,7 +123,6 @@ class Event:
 
     @classmethod
     def clusters(cls):
-        cls.arrangement = "clusters"
         cls.xcor = cls.ycor = cls.zcor = cls.rotate_y = cls.rotate_x = cls.rotate_z = 0
         cls.scale =1
 
