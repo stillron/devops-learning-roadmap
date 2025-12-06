@@ -1,0 +1,71 @@
+name: flask-api-postgres
+services:
+  app:
+    build: ./app
+    networks:
+      - flask-app-network
+    ports:
+      - 5050:5000
+    env_file:
+      - .env
+    depends_on:
+      - db
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:5000/health || exit 1"]
+      interval: 5s
+      timeout: 3s
+      retries: 3
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 300M
+
+
+  db:
+    build: ./db
+    networks:
+      - flask-app-network
+    volumes: 
+      - app-db:/var/lib/postgresql
+    env_file:
+      - .env
+    healthcheck:
+      test: ["CMD", "pg_isready"]
+      interval: 5s
+      timeout: 3s
+      retries: 3
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 200M
+
+  pgadmin:
+    image: dpage/pgadmin4
+    networks: 
+      - flask-app-network
+    ports:
+      - 5051:80
+    volumes:
+      - pgadmin:/var/lib/pgadmin
+    env_file:
+      - .env
+    restart: unless-stopped
+    depends_on:
+      - db
+    healthcheck:
+      test: ["CMD-SHELL", "wget --spider -q http://localhost:80 || exit 1"]
+      interval: 5s
+      timeout: 3s
+      retries: 3
+
+
+networks:
+  flask-app-network:
+
+volumes:
+  app-db:
+  pgadmin:
