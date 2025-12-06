@@ -97,7 +97,6 @@ docker compose restart
 
 ## Production Patterns Implemented
 
-- **Non-root containers**: Services run as unprivileged users
 - **Health checks**: Docker monitors service availability
 - **Resource limits**: Memory and CPU constraints prevent resource exhaustion
 - **Restart policies**: Containers automatically recover from failures
@@ -109,7 +108,7 @@ docker compose restart
 
 **This project demonstrates:**
 - **Docker orchestration**: Multi-container applications with service dependencies and networking
-- **Production readiness**: Health checks, logging, resource management, and security best practices
+- **Production readiness**: Health checks, logging, resource management
 - **Database operations**: Connection pooling, migrations, and persistent storage
 - **API development**: RESTful design, error handling, and proper HTTP semantics
 - **Operational skills**: Container debugging, log analysis, and service management
