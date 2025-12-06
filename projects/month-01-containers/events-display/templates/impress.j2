@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="css/custom.css" rel="stylesheet" />
+    <link href="css/impress-common.css" rel="stylesheet" />
+    <title>Lebanon Public Libraries -- Events</title>
+  </head>
+  <body>
+    <div class="fallback-message visually-hidden">
+    <p>Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified version of this presentation.</p>
+    <p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser.</p>
+</div>
+<div id="background-wrapper">
+</div>
+<div id="impress"
+    data-transition-duration="1000"
+    
+    data-width="1920"
+    data-height="1080"
+    data-max-scale="3"
+    data-min-scale="0"
+    data-perspective="1000"
+    
+    data-autoplay="5">
+
+    {% for event in events -%}
+    <div class="step" 
+        {%- if event.xcor is not none %} data-x="{{ event.xcor }}" {% endif %}
+        {%- if event.ycor is not none -%} data-y="{{ event.ycor }}" {% endif %}
+        {%- if event.zcor is not none -%} data-z="{{ event.zcor }}" {% endif %}
+        {%- if event.scale is not none -%} data-scale="{{ event.scale }}" {% endif %}
+        {%- if event.rotate_x is not none -%} data-rotate-x="{{ event.rotate_x }}" {% endif %}
+        {%- if event.rotate_y is not none -%} data-rotate-y="{{ event.rotate_y }}" {% endif %}
+        {%- if event.rotate_z is not none -%} data-rotate-z="{{ event.rotate_z }}" {% endif %}>
+        <h2>{{ event.title }}</h2>
+            <div class="event_info">
+                <div class="image">
+                    <img src="{{ event.image }}"/>
+                </div>
+            <div class="info">
+                <p class="event_date">{{ event.weekday }}, {{event.month}} {{ event.day }}</p>
+                <p class="event_time">{{ event.start_time }} - {{ event.end_time }}</p>
+                <p class="event_location rotating">{{ event.campus }} {{ event.location }}</p>
+            </div>
+        </div>
+    </div>
+
+    {% endfor %}
+
+
+</div>
+
+    <script src="https://cdn.jsdelivr.net/gh/impress/impress.js@2.0.0/js/impress.js"></script>
+    <script>impress().init();</script>
+
+  </body>
+</html>
