@@ -1,0 +1,17 @@
+[Unit]
+Description=Generate and upload events display content
+After=network-online.target docker.service
+Wants=network-online.target
+Requires=docker.service
+
+[Service]
+Type=oneshot
+User=appuser
+Group=appuser
+WorkingDirectory=/home/appuser/events-display
+ExecStart=/usr/bin/docker compose up
+ExecStartPost=/usr/bin/docker compose down --remove-orphans
+
+# Logging
+StandardOutput=journal
+StandardError=journal
