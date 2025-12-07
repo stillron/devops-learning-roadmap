@@ -13,7 +13,7 @@
 
 ---
 
-### Week 1 – Python Environment + Simple API ✅/🕐/❌
+### Week 1 – Python Environment + Simple API ✅
 Planned hours: 10 | Actual: 10
 
 #### Tasks
@@ -59,7 +59,7 @@ Planned hours: 10 | Actual: 10
 
 ---
 
-### Week 2 – Docker Compose + PostgreSQL Integration ✅/🕐/❌
+### Week 2 – Docker Compose + PostgreSQL Integration ✅
 Planned hours: 12 | Actual: 13
 
 #### Tasks
@@ -138,7 +138,7 @@ cur.execute(query, (*values, id))
 
 ---
 
-### Week 3 – Production-Ready Multi-Container Stack ✅/🕐/❌
+### Week 3 – Production-Ready Multi-Container Stack ✅
 Planned hours: 12 | Actual: 12
 
 **Theme:** Production patterns + reinforcing dynamic SQL from Week 2 PATCH work
@@ -243,8 +243,8 @@ Week 2's PATCH endpoint taught me to build things dynamically based on what data
 
 ---
 
-### Week 4 – Events Display Docker Migration ✅/🕐/❌
-Planned hours: 12 | Actual: 3  
+### Week 4 – Events Display Docker Migration ✅
+Planned hours: 12 | Actual: 12 
 
 **Project Goal:** Migrate existing AWS Lambda application to containerized architecture, demonstrating cost optimization and reduced operational complexity.
 
