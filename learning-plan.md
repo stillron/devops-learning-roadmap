@@ -262,7 +262,7 @@ Planned hours: 12 | Actual: 3
   - Proper logging
   - Restart policies
 - [x] Test locally: generate → upload to S3
-- [ ] Deploy to Proxmox with scheduled execution (cron or systemd timer)
+- [x] Deploy to Proxmox with scheduled execution (cron or systemd timer)
 
 #### Resources
 - [Docker Compose depends_on](https://docs.docker.com/compose/compose-file/05-services/#depends_on)
@@ -287,9 +287,30 @@ Planned hours: 12 | Actual: 3
 - *Future enhancement: Can be deployed as Kubernetes CronJob in Month 3-4*
 
 #### Reflection
+
 **What I learned:**  
+- Multi-container orchestration with `depends_on: service_completed_successfully` to create sequential pipelines. 
+- Migrated from python-dotenv to os.environ for containerized environments, discovering that quotes in .env files are literal when Docker reads them (not stripped like in shell exports). 
+- Implemented non-root containers with dynamic UID/GID mapping using `user: ${HOST_UID:-1000}:${HOST_GID:-1000}` for portable bind mount permissions. 
+- Set up IAM users with restricted least-privilege policies for S3 and CloudFront access. 
+- Created systemd service (oneshot) and timer files for scheduled execution with proper dependencies (After=network-online.target docker.service). 
+- Learned Mermaid syntax for architecture diagrams and the .env.example convention for portfolio projects. 
+- Understood operational trade-offs between bind mounts (direct access for debugging) vs named volumes (Docker-managed abstraction) for batch jobs.
+
 **What broke:**  
+- Environment variable quote handling - .env file had quotes around values which Docker passed literally to the OAuth API, causing 400 errors. Fixed by removing quotes from .env values. 
+- UID permission mismatches on bind mounts between laptop (UID 1001) and hardcoded Dockerfile (UID 1000), resolved with runtime user mapping in compose. 
+- AWS CLI syntax confusion - used `--dry-run` instead of `--dryrun` for s3 sync command. 
+- Typo in exception handler: `RequestExeception` instead of `RequestException` - discovered by testing with bad credentials. 
+- Initially structured Mermaid diagram with too many action nodes instead of focusing on components and data flow.
+
 **How this reinforced Week 3 patterns:**  
+- Applied logging patterns from Week 3 but simplified for batch jobs (structured logging without JSON, since no need for centralized aggregation). 
+- Used multi-stage Dockerfile pattern with .venv isolation. Applied pip-tools from Week 3 for dependency management (requirements.in → requirements.txt).
+- Continued defensive programming with try/except blocks and proper error handling. 
+- Made operational decisions about resource limits (chose not to add them for 5-second batch jobs, unlike Week 3's long-running services). 
+- Reinforced the pattern of breaking down complex problems - when Mermaid felt overwhelming, stepped back to understand components vs actions. 
+- Applied the "do things manually first" pattern by testing with --dryrun before real S3 uploads.
 
 ---
 
