@@ -343,14 +343,28 @@ Planned hours: 10 | Actual: 8
 #### Proof of Completion
 - Two GitHub repos with polished READMEs
 - Architecture diagrams for both projects
-- Screenshots of running containers for both stacks
-- LinkedIn post published
 
 #### Reflection
 **Wins:**  
+- Created comprehensive documentation for both Flask+PostgreSQL and Events Display projects with professional README files
+- Learned Mermaid diagram syntax and successfully created architecture diagrams showing component relationships and data flows
+- Wrote honest migration story for Events Display explaining operational complexity reduction (not cost) as primary motivation
+- Established .env.example pattern for portfolio projects to document required environment variables
+- Organized completed work into proper project structure under `projects/month-01-containers/`
+
 **Challenges:**  
+- Initial Mermaid diagrams had too many action nodes instead of focusing on components and data flow
+- Needed to reframe Lambda migration narrative from "cost savings" to accurate "operational complexity reduction" 
+- Finding the right level of detail for documentation (enough to be useful, not so much it becomes overwhelming)
+
 **Key differences between the two projects:**  
+- **Flask+PostgreSQL**: Long-running services requiring health checks, restart policies, resource limits, and connection pooling
+- **Events Display**: Batch job pipeline with sequential container execution using `depends_on: service_completed_successfully`
+- Flask project emphasized production patterns for always-on services; Events Display focused on orchestration and scheduling
+- Different logging strategies: JSON structured logging for long-running services vs. simpler logging for short-lived batch jobs
+
 **Next Month Focus:**  
+Moving into Terraform and AWS infrastructure.
 
 ---
 
