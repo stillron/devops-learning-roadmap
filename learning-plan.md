@@ -377,11 +377,11 @@ Moving into Terraform and AWS infrastructure.
 Planned hours: 10 | Actual: ___  
 
 #### Tasks
-- [ ] Install Terraform + AWS CLI
-- [ ] Create IAM user with appropriate permissions
+- [x] Install Terraform + AWS CLI
+- [x] Create IAM user with appropriate permissions
 - [ ] Learn Terraform basics: providers, resources, variables, outputs
 - [ ] Write `main.tf` to provision a simple EC2 instance
-- [ ] Practice `terraform init`, `plan`, `apply`, `destroy`
+- [x] Practice `terraform init`, `plan`, `apply`, `destroy`
 - [ ] Output the instance public IP
 
 #### Resources
