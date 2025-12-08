@@ -314,25 +314,25 @@ Planned hours: 12 | Actual: 12
 
 ---
 
-### Week 5 – Documentation + Architecture Diagrams ✅/🕐/❌
-Planned hours: 10 | Actual: ___  
+### Week 5 – Documentation + Architecture Diagrams ✅
+Planned hours: 10 | Actual: 8  
 
 **Focus:** Document BOTH the Flask+PostgreSQL stack AND the Events Display project
 
 #### Tasks
-- [ ] **Flask+PostgreSQL Project:**
+- [x] **Flask+PostgreSQL Project:**
   - Write comprehensive README.md with setup instructions
   - Create architecture diagram (Mermaid or draw.io)
   - Document API endpoints (consider using Swagger/OpenAPI)
   - Add troubleshooting section
-- [ ] **Events Display Project:**
+- [x] **Events Display Project:**
   - Write README.md explaining Lambda → Docker migration
   - Document the multi-container architecture
   - Explain scheduling approach (cron/systemd timer)
   - Include cost comparison (Lambda vs containerized)
-- [ ] Push both projects to GitHub with proper .gitignore
-- [ ] Write LinkedIn post about both projects and learning journey
-- [ ] Optional: Write blog post comparing serverless vs containerized architectures
+- [x] Push both projects to GitHub with proper .gitignore
+- [x] Write LinkedIn post about both projects and learning journey
+
 
 #### Resources
 - [Mermaid Diagrams for Markdown](https://mermaid.js.org/)
