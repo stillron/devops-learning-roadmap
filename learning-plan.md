@@ -380,9 +380,9 @@ Planned hours: 10 | Actual: ___
 - [x] Install Terraform + AWS CLI
 - [x] Create IAM user with appropriate permissions
 - [ ] Learn Terraform basics: providers, resources, variables, outputs
-- [ ] Write `main.tf` to provision a simple EC2 instance
+- [x] Write `main.tf` to provision a simple EC2 instance
 - [x] Practice `terraform init`, `plan`, `apply`, `destroy`
-- [ ] Output the instance public IP
+- [x] Output the instance public IP
 
 #### Resources
 - [Terraform AWS Tutorial](https://developer.hashicorp.com/terraform/tutorials/aws-get-started)
