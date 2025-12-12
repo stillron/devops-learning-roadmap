@@ -373,8 +373,8 @@ Moving into Terraform and AWS infrastructure.
 
 ---
 
-### Week 6 – Terraform Fundamentals ✅/🕐/❌
-Planned hours: 10 | Actual: ___  
+### Week 6 – Terraform Fundamentals ✅
+Planned hours: 10 | Actual: 10 
 
 #### Tasks
 - [x] Install Terraform + AWS CLI
@@ -395,9 +395,37 @@ Planned hours: 10 | Actual: ___
 - Screenshot of EC2 console showing your instance
 
 #### Reflection
-**What I learned:**  
-**What broke:**  
-**Next actions:**  
+
+**What I learned:**
+- Terraform configuration structure: terraform block (required providers), provider block (global settings like region), variable block (import variables/sensitive data), data block (lookup existing resources), resource block (create infrastructure), output block (return information)
+- State management: terraform.tfstate tracks what Terraform has created and compares desired state (main.tf) to actual state to determine what changes to make
+- Reference syntax: Resources reference each other using `resource_type.local_name.attribute` pattern (e.g., `aws_security_group.web_sg.id`)
+- Security group architecture: Separate security groups for different concerns (base for egress, admin for SSH, web for HTTP/HTTPS) can be combined on instances for modular, reusable infrastructure
+- Infrastructure layering: Shared infrastructure (security groups, VPCs) should be managed in separate Terraform projects from application resources to avoid dependencies
+
+**What broke:**
+- Couldn't SSH initially because I hadn't created ingress rules in the security group and attached it to the instance
+- apt update hung because there was no egress rule allowing outbound traffic
+- Used `security_groups` attribute initially which forces instance replacement; switching to `vpc_security_group_ids` allows in-place updates
+- Looked in data source documentation when I needed resource documentation (wrong section of the Terraform provider docs)
+
+**What I'll improve next week:**
+- Continue using repetition to build muscle memory - typing configurations multiple times helped concepts click
+- Once syntax becomes familiar, freed up mental space to explore infrastructure design patterns
+- Get more comfortable navigating Terraform documentation (distinguishing between data sources and resources)
+- Expect that Week 7 will also require building things multiple times before they stick
+
+**Key commands/patterns to remember:**
+- `terraform fmt` - format .tf files automatically
+- `terraform validate` - check configuration syntax
+- `terraform init` - download and set up providers
+- `terraform plan` - preview what changes will be made
+- `terraform show` - display current state
+- `terraform apply` - create/update infrastructure
+- `terraform destroy` - tear down infrastructure
+- Reference syntax: `resource_type.local_name.attribute` (e.g., `data.aws_ami.debian13.id`)
+- Heredoc for multi-line strings: `<<-EOF ... EOF` (used in user_data)
+- Workflow pattern: init → plan → apply → destroy
 
 ---
 
