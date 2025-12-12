@@ -379,7 +379,7 @@ Planned hours: 10 | Actual: 10
 #### Tasks
 - [x] Install Terraform + AWS CLI
 - [x] Create IAM user with appropriate permissions
-- [ ] Learn Terraform basics: providers, resources, variables, outputs
+- [x] Learn Terraform basics: providers, resources, variables, outputs
 - [x] Write `main.tf` to provision a simple EC2 instance
 - [x] Practice `terraform init`, `plan`, `apply`, `destroy`
 - [x] Output the instance public IP
