@@ -433,10 +433,10 @@ Planned hours: 10 | Actual: 10
 Planned hours: 12 | Actual: ___  
 
 #### Tasks
-- [ ] Create RDS PostgreSQL instance using Terraform
-- [ ] Configure security groups for database access
+- [x] Create RDS PostgreSQL instance using Terraform
+- [x] Configure security groups for database access
 - [ ] Store RDS credentials in AWS Secrets Manager
-- [ ] Connect to RDS from local machine using psql
+- [x] Connect to RDS from local machine using psql
 - [ ] Test connection from EC2 instance
 
 #### Resources
