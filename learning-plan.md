@@ -430,7 +430,7 @@ Planned hours: 10 | Actual: 10
 ---
 
 ### Week 7 – RDS PostgreSQL + Security Groups ✅/🕐/❌
-Planned hours: 12 | Actual: ___  
+Planned hours: 12 | Actual: 6 
 
 #### Tasks
 - [x] Create RDS PostgreSQL instance using Terraform
