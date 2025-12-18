@@ -1,8 +1,8 @@
 # 🧭 DevOps Learning Roadmap (6 Months)
-**Goal:** Master Docker, Kubernetes, Terraform, Python, Go, and PostgreSQL through hands-on projects, targeting Kubernetes certification by April 2026  
+**Goal:** Master Docker, Kubernetes, Terraform, Python, and PostgreSQL through hands-on projects, targeting CKA (Certified Kubernetes Administrator) certification by mid-2026  
 **Pace:** Standard (10–12 hrs/week)  
 **Cloud:** AWS Free Tier  
-**Languages:** Python-first, Go later  
+**Language:** Python for automation and application development  
 **Starting Point:** Docker fundamentals complete, now building multi-container applications
 
 ---
@@ -711,30 +711,33 @@ Planned hours: 10 | Actual: ___
 
 ---
 
-## 📅 Month 5 – Go Language + Database Migrations
-**Theme:** Learn Go, build tooling, automate database schema changes
+## 📅 Month 5 – Advanced Python + Testing + Automation
+**Theme:** Deepen Python expertise, master testing practices, automate database operations
 
 ---
 
-### Week 18 – Go Fundamentals ✅/🕐/❌
+### Week 18 – Advanced Flask Patterns + Async Programming ✅/🕐/❌
 Planned hours: 12 | Actual: ___  
 
 #### Tasks
-- [ ] Complete Tour of Go
-- [ ] Write basic Go programs: file I/O, HTTP client, JSON parsing
-- [ ] Build a simple CLI tool using cobra or flags
-- [ ] Practice Go testing with the testing package
-- [ ] Containerize a Go application (multi-stage build)
+- [ ] Learn Flask Blueprints for modular application structure
+- [ ] Implement async/await patterns with asyncio
+- [ ] Add request validation and error handling middleware
+- [ ] Create custom decorators for authentication/authorization
+- [ ] Practice context managers and proper resource management
+- [ ] Build an async API client that makes concurrent requests
 
 #### Resources
-- [Tour of Go](https://go.dev/tour/)
-- [Effective Go](https://go.dev/doc/effective_go)
-- [Cobra CLI Framework](https://github.com/spf13/cobra)
+- [Flask Blueprints](https://flask.palletsprojects.com/en/3.0.x/blueprints/)
+- [Python asyncio](https://docs.python.org/3/library/asyncio.html)
+- [Real Python: Async IO](https://realpython.com/async-io-python/)
+- [Flask Application Structure](https://flask.palletsprojects.com/en/3.0.x/patterns/)
 
 #### Proof
-- Completed Go exercises
-- CLI tool that performs a useful task
-- Multi-stage Dockerfile for Go app
+- Modular Flask app using Blueprints
+- Working async script that demonstrates concurrent operations
+- Custom middleware and decorators in use
+- Performance comparison: sync vs async for I/O-bound tasks
 
 #### Reflection
 **What I learned:**  
@@ -743,25 +746,30 @@ Planned hours: 12 | Actual: ___
 
 ---
 
-### Week 19 – Go + PostgreSQL Integration ✅/🕐/❌
+### Week 19 – Testing, Code Quality, and CI ✅/🕐/❌
 Planned hours: 12 | Actual: ___  
 
 #### Tasks
-- [ ] Use pgx driver to connect to PostgreSQL from Go
-- [ ] Build a Go API with http or Gin framework
-- [ ] Implement CRUD operations in Go
-- [ ] Add proper error handling and logging
-- [ ] Write tests for your database functions
+- [ ] Write unit tests with pytest for Flask API
+- [ ] Practice mocking database connections and external APIs
+- [ ] Achieve >80% code coverage
+- [ ] Set up pylint, black, and mypy for code quality
+- [ ] Create pre-commit hooks for automated checks
+- [ ] Write integration tests for full API workflows
+- [ ] Add pytest fixtures for test data setup
 
 #### Resources
-- [pgx PostgreSQL Driver](https://github.com/jackc/pgx)
-- [Gin Web Framework](https://gin-gonic.com/)
-- [Go Database/SQL Tutorial](https://go.dev/doc/database/querying)
+- [pytest Documentation](https://docs.pytest.org/)
+- [pytest-cov for Coverage](https://pytest-cov.readthedocs.io/)
+- [Python unittest.mock](https://docs.python.org/3/library/unittest.mock.html)
+- [pre-commit Framework](https://pre-commit.com/)
+- [Real Python: Testing](https://realpython.com/python-testing/)
 
 #### Proof
-- Go API responding to HTTP requests
-- Database queries working from Go
-- Test coverage report
+- Test suite with >80% coverage
+- CI workflow running tests automatically
+- Screenshot of coverage report
+- Working pre-commit hooks
 
 #### Reflection
 **What I learned:**  
@@ -770,25 +778,28 @@ Planned hours: 12 | Actual: ___
 
 ---
 
-### Week 20 – Database Migrations ✅/🕐/❌
+### Week 20 – Database Migrations with Alembic ✅/🕐/❌
 Planned hours: 10 | Actual: ___  
 
 #### Tasks
-- [ ] Learn database migration concepts
-- [ ] Use golang-migrate or atlas for schema management
-- [ ] Create migration files (up/down)
+- [ ] Learn database migration concepts and version control
+- [ ] Install and configure Alembic with SQLAlchemy
+- [ ] Create initial migration from existing schema
+- [ ] Practice creating migrations: add tables, columns, indexes
+- [ ] Test rollback scenarios (downgrade migrations)
+- [ ] Integrate migrations into Docker container startup
 - [ ] Test migrations against local and RDS databases
-- [ ] Integrate migrations into application startup
 
 #### Resources
-- [golang-migrate](https://github.com/golang-migrate/migrate)
-- [Atlas Migrations](https://atlasgo.io/)
+- [Alembic Tutorial](https://alembic.sqlalchemy.org/en/latest/tutorial.html)
+- [SQLAlchemy with Alembic](https://docs.sqlalchemy.org/en/20/tutorial/metadata.html)
 - [Database Migration Best Practices](https://www.prisma.io/dataguide/types/relational/what-are-database-migrations)
 
 #### Proof
-- Migration files in Git
-- Successful up/down migration runs
-- Database schema version tracking
+- Migration files in Git showing schema evolution
+- Successful upgrade/downgrade runs
+- Database version tracking with alembic_version table
+- Migrations running automatically in containerized app
 
 #### Reflection
 **What I learned:**  
@@ -797,24 +808,28 @@ Planned hours: 10 | Actual: ___
 
 ---
 
-### Week 21 – Deploy Go App to Kubernetes ✅/🕐/❌
+### Week 21 – Advanced Automation + Data Processing ✅/🕐/❌
 Planned hours: 10 | Actual: ___  
 
 #### Tasks
-- [ ] Create Helm chart for your Go application
-- [ ] Deploy to minikube or EKS
-- [ ] Run migrations as a Kubernetes Job
-- [ ] Configure health checks for the Go app
-- [ ] Test the full stack: Go API → PostgreSQL
+- [ ] Build CLI tool using Click or Typer framework
+- [ ] Process CSV/JSON data with pandas (DevOps reporting scenario)
+- [ ] Create infrastructure automation scripts (AWS SDK boto3)
+- [ ] Practice scheduling with APScheduler or similar
+- [ ] Implement proper logging and error reporting
+- [ ] Deploy Python automation to Kubernetes as CronJob
 
 #### Resources
-- [Kubernetes Jobs](https://kubernetes.io/docs/concepts/workloads/controllers/job/)
-- [Init Containers](https://kubernetes.io/docs/concepts/workloads/pods/init-containers/)
+- [Click Framework](https://click.palletsprojects.com/)
+- [pandas Basics](https://pandas.pydata.org/docs/getting_started/intro_tutorials/)
+- [boto3 AWS SDK](https://boto3.amazonaws.com/v1/documentation/api/latest/index.html)
+- [APScheduler](https://apscheduler.readthedocs.io/)
 
 #### Proof
-- Go app running in Kubernetes
-- Migration job completed successfully
-- Health check endpoints responding
+- Working CLI tool for infrastructure tasks
+- Data processing script with pandas
+- Automated AWS task (e.g., resource cleanup, reporting)
+- Python automation running as K8s CronJob
 
 #### Reflection
 **Wins:**  
@@ -939,7 +954,7 @@ Planned hours: 10 | Actual: ___
 ## 🎯 After Month 6 – Continue Learning
 
 Your learning doesn't stop here. Consider these next steps:
-- **CKA Certification Prep** (April 2026 target) - Structured study for Certified Kubernetes Administrator
+- **CKA Certification Prep** (July/August 2026 target) - 2-3 months of dedicated study for Certified Kubernetes Administrator exam after completing the 6-month foundation
 - **AWS Solutions Architect Certification** - After Terraform mastery
 - **Advanced Topics:** Prometheus/Grafana monitoring, ArgoCD/Flux GitOps, Service Mesh (Istio/Linkerd)
 - **HashiCorp Vault** for secrets management
@@ -951,8 +966,8 @@ Your learning doesn't stop here. Consider these next steps:
 **Cloud-Native Application Platform**  
 
 A production-ready system demonstrating:
-- Python and Go microservices
-- PostgreSQL with automated migrations
+- Python microservices with advanced patterns (async, testing, automation)
+- PostgreSQL with automated migrations (Alembic)
 - Containerized with Docker, deployed to AWS EKS
 - Infrastructure provisioned with Terraform
 - CI/CD pipeline with GitHub Actions

@@ -33,9 +33,9 @@ This repository represents my structured approach to learning enterprise-grade D
 - Connection pooling and high availability
 
 **Development**
-- Python for APIs and automation
-- Go for compiled tools and services
-- REST API development and testing
+- Python for APIs, automation, and infrastructure tooling
+- Advanced testing and code quality practices
+- REST API development and async programming
 
 **CI/CD**
 - GitHub Actions for automated testing and deployment
@@ -92,10 +92,11 @@ As projects are completed, they will be linked here with architecture diagrams a
 - Helm chart development
 - AWS EKS cluster management
 
-### Month 5: Go Development
-- Go microservices and CLI tools
-- Database migrations automation
-- Containerized Go applications
+### Month 5: Advanced Python & Testing
+- Advanced Flask patterns and async programming
+- Comprehensive testing with pytest
+- Database migrations with Alembic
+- CLI tools and infrastructure automation
 
 ### Month 6: CI/CD & Automation
 - GitHub Actions pipelines
