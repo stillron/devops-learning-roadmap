@@ -53,4 +53,12 @@ resource "aws_db_instance" "learning_db" {
   skip_final_snapshot    = true
   vpc_security_group_ids = [aws_security_group.postgres_sg.id]
 
+  provisioner "local-exec" {
+    command = "psql -h ${self.address} -U ${var.my_username} -d postgres -f init.sql"
+    environment = {
+      PGPASSWORD = var.my_password
+    }
+    
+  }
+
 }
