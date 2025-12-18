@@ -724,20 +724,28 @@ Planned hours: 12 | Actual: ___
 - [ ] Implement async/await patterns with asyncio
 - [ ] Add request validation and error handling middleware
 - [ ] Create custom decorators for authentication/authorization
-- [ ] Practice context managers and proper resource management
-- [ ] Build an async API client that makes concurrent requests
+- [ ] **Set up Redis/Valkey for caching with Flask**
+- [ ] **Build simple caching examples (cache API responses, rate limiting)**
+- [ ] Practice HTMX for dynamic interfaces (hx-get, hx-post, hx-swap)
+- [ ] Build an HTMX-powered interface with real-time updates
 
 #### Resources
 - [Flask Blueprints](https://flask.palletsprojects.com/en/3.0.x/blueprints/)
 - [Python asyncio](https://docs.python.org/3/library/asyncio.html)
 - [Real Python: Async IO](https://realpython.com/async-io-python/)
 - [Flask Application Structure](https://flask.palletsprojects.com/en/3.0.x/patterns/)
+- [HTMX Documentation](https://htmx.org/docs/)
+- [HTMX + Flask Tutorial](https://testdriven.io/blog/flask-htmx-tailwind/)
+- [redis-py Documentation](https://redis-py.readthedocs.io/)
+- [Valkey](https://valkey.io/) (open source Redis alternative)
 
 #### Proof
 - Modular Flask app using Blueprints
 - Working async script that demonstrates concurrent operations
 - Custom middleware and decorators in use
-- Performance comparison: sync vs async for I/O-bound tasks
+- **Redis/Valkey caching working with Flask endpoints**
+- **HTMX-powered interface showing dynamic updates without page reloads**
+- Performance comparison: cached vs uncached requests
 
 #### Reflection
 **What I learned:**  
@@ -808,27 +816,29 @@ Planned hours: 10 | Actual: ___
 
 ---
 
-### Week 21 – Advanced Automation + Data Processing ✅/🕐/❌
+### Week 21 – Advanced Automation + Infrastructure Tools ✅/🕐/❌
 Planned hours: 10 | Actual: ___  
 
 #### Tasks
 - [ ] Build CLI tool using Click or Typer framework
-- [ ] Process CSV/JSON data with pandas (DevOps reporting scenario)
-- [ ] Create infrastructure automation scripts (AWS SDK boto3)
+- [ ] Create infrastructure automation scripts with boto3 (AWS SDK)
+- [ ] Implement resource cleanup automation (stop idle EC2s, delete old snapshots)
+- [ ] Add Redis/Valkey for task queue or rate limiting patterns
 - [ ] Practice scheduling with APScheduler or similar
 - [ ] Implement proper logging and error reporting
 - [ ] Deploy Python automation to Kubernetes as CronJob
 
 #### Resources
 - [Click Framework](https://click.palletsprojects.com/)
-- [pandas Basics](https://pandas.pydata.org/docs/getting_started/intro_tutorials/)
+- [Typer CLI Framework](https://typer.tiangolo.com/)
 - [boto3 AWS SDK](https://boto3.amazonaws.com/v1/documentation/api/latest/index.html)
 - [APScheduler](https://apscheduler.readthedocs.io/)
+- [Kubernetes CronJob](https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/)
 
 #### Proof
-- Working CLI tool for infrastructure tasks
-- Data processing script with pandas
-- Automated AWS task (e.g., resource cleanup, reporting)
+- Working CLI tool for infrastructure tasks (with --help, subcommands)
+- Automated AWS task (e.g., resource cleanup, cost reporting)
+- Redis-based rate limiting or task tracking
 - Python automation running as K8s CronJob
 
 #### Reflection

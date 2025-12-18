@@ -29,6 +29,7 @@ This repository represents my structured approach to learning enterprise-grade D
 
 **Databases**
 - PostgreSQL (local, RDS, Kubernetes StatefulSets)
+- Redis/Valkey for caching and performance optimization
 - Database migrations and backup automation
 - Connection pooling and high availability
 
@@ -93,7 +94,8 @@ As projects are completed, they will be linked here with architecture diagrams a
 - AWS EKS cluster management
 
 ### Month 5: Advanced Python & Testing
-- Advanced Flask patterns and async programming
+- Advanced Flask patterns with HTMX for dynamic interfaces
+- Redis/Valkey caching for performance optimization
 - Comprehensive testing with pytest
 - Database migrations with Alembic
 - CLI tools and infrastructure automation
