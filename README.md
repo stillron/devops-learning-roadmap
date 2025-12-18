@@ -2,7 +2,7 @@
 
 ## Overview
 
-This repository documents my transition into a senior DevOps/Infrastructure Engineer role, with a focus on cloud-native technologies and modern infrastructure practices. With 15 years of Linux systems administration experience managing production infrastructure, I'm expanding my skillset into container orchestration, infrastructure as code, and CI/CD automation.
+This repository documents my journey learning modern DevOps and cloud-native technologies. With 15 years of Linux systems administration experience managing production infrastructure, I'm expanding my skillset into container orchestration, infrastructure as code, and CI/CD automation through structured hands-on projects.
 
 ## Background
 
@@ -13,7 +13,7 @@ I currently manage production Linux infrastructure including:
 - Docker containerized services (Gitea, oauth2-proxy, n8n, and others)
 - Ansible automation and custom tooling
 
-This repository represents my structured approach to mastering enterprise-grade DevOps practices through hands-on projects and real-world implementations.
+This repository represents my structured approach to learning enterprise-grade DevOps practices through hands-on projects and real-world implementations.
 
 ## Core Technologies
 
@@ -113,7 +113,7 @@ This roadmap emphasizes practical, production-ready implementations over theoret
 
 ## Goals
 
-The skills demonstrated in this repository target senior-level infrastructure and DevOps engineering roles, with emphasis on:
+The skills and practices demonstrated in this repository focus on:
 - Cloud-native application deployment
 - Infrastructure automation and consistency
 - Production reliability and monitoring

@@ -1,5 +1,5 @@
-# 🧭 DevOps Career Transition Plan (6 Months)
-**Goal:** Move into a Senior DevOps/Infrastructure Engineer role mastering Docker, Kubernetes, Terraform, Python, Go, and PostgreSQL  
+# 🧭 DevOps Learning Roadmap (6 Months)
+**Goal:** Master Docker, Kubernetes, Terraform, Python, Go, and PostgreSQL through hands-on projects, targeting Kubernetes certification by April 2026  
 **Pace:** Standard (10–12 hrs/week)  
 **Cloud:** AWS Free Tier  
 **Languages:** Python-first, Go later  
@@ -959,10 +959,10 @@ A production-ready system demonstrating:
 - Automated backups and monitoring
 - Complete documentation and architecture diagrams
 
-This portfolio demonstrates the skills required for senior infrastructure/DevOps roles.
+This portfolio demonstrates comprehensive DevOps and cloud-native infrastructure skills.
 
 ---
 
 **Progress Tracking:** Mark each week ✅ complete, 🕐 in progress, or ❌ blocked.  
 **Portfolio Focus:** Every project should have screenshots, diagrams, and thorough documentation.  
-**Interview Ready:** By month 6, you'll have 5-6 production-quality projects to discuss in technical interviews, including a real-world Lambda to containerized architecture migration.
+**Project Quality:** By month 6, you'll have 5-6 production-quality projects demonstrating real-world DevOps patterns, including a serverless-to-container migration.
