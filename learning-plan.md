@@ -430,14 +430,14 @@ Planned hours: 10 | Actual: 10
 ---
 
 ### Week 7 – RDS PostgreSQL + Security Groups ✅/🕐/❌
-Planned hours: 12 | Actual: 6 
+Planned hours: 12 | Actual: 10
 
 #### Tasks
 - [x] Create RDS PostgreSQL instance using Terraform
 - [x] Configure security groups for database access
 - [ ] Store RDS credentials in AWS Secrets Manager
 - [x] Connect to RDS from local machine using psql
-- [ ] Test connection from EC2 instance
+- [x] Test connection from EC2 instance
 
 #### Resources
 - [AWS RDS Terraform Resource](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/db_instance)
