@@ -429,13 +429,13 @@ Planned hours: 10 | Actual: 10
 
 ---
 
-### Week 7 – RDS PostgreSQL + Security Groups ✅/🕐/❌
-Planned hours: 12 | Actual: 10
+### Week 7 – RDS PostgreSQL + Security Groups ✅
+Planned hours: 12 | Actual: 12
 
 #### Tasks
 - [x] Create RDS PostgreSQL instance using Terraform
 - [x] Configure security groups for database access
-- [ ] Store RDS credentials in AWS Secrets Manager
+- [x] Store RDS credentials in AWS Secrets Manager
 - [x] Connect to RDS from local machine using psql
 - [x] Test connection from EC2 instance
 
@@ -450,9 +450,33 @@ Planned hours: 12 | Actual: 10
 - Terraform state showing security group rules
 
 #### Reflection
-**What I learned:**  
-**What broke:**  
-**Next actions:**  
+
+**What I learned:**
+- Created RDS PostgreSQL instances using Terraform with proper configuration (allocated_storage, engine, instance_class, skip_final_snapshot, publicly_accessible)
+- Configured security groups for database access with both CIDR-based rules (my laptop IP) and security group reference rules (allowing EC2 instances)
+- Security groups can reference other security groups using `referenced_security_group_id` - this allows dynamic access between AWS resources without hardcoding IP addresses
+- AWS Secrets Manager for production credential management: create secret container, store secret version, read with data source, parse JSON with jsondecode()
+- Terraform provisioners with `local-exec` to automate database initialization (init.sql) - runs after resource creation
+- RDS endpoint includes port (`:5432`) but `self.address` gives hostname only
+- `publicly_accessible` controls whether RDS is reachable from outside AWS VPC (false = internal only, true = internet accessible with proper security groups)
+- Egress rules required for EC2 to make outbound connections (learned this when EC2 couldn't reach RDS)
+
+**What broke:**
+- Initially forgot `skip_final_snapshot = true` which would have blocked `terraform destroy`
+- Database username with dashes not allowed by PostgreSQL (had to use underscores or alphanumeric only)
+- Forgot `publicly_accessible = true` initially, connections timed out from laptop
+- RDS provisioner failed because `self.endpoint` includes `:5432` port - needed `self.address` instead
+- Forgot egress rules on EC2 security group, couldn't make outbound connections to RDS
+- Variable naming mismatch between storing secrets (username, password, ip) and accessing them (initially used my_username instead of username)
+- Forgot `engine = "postgres"` in one round - showed as `(known after apply)` in plan, which didn't make sense
+
+**What I'll improve next week:**
+- Continue reviewing `terraform plan` output carefully to catch mistakes before apply (like missing engine or wrong variable names)
+- Keep applying the "build it multiple times" pattern - worked well for internalizing RDS syntax
+- Remember that production patterns (Secrets Manager, security group references) take more setup but provide better security and operational visibility
+
+**Next actions:**
+- Week 8: Deploy Flask App to EC2 + Connect to RDS (combines Python/Docker knowledge from Month 1 with Terraform/AWS infrastructure from Month 2)
 
 ---
 
