@@ -480,15 +480,15 @@ Planned hours: 12 | Actual: 12
 
 ---
 
-### Week 8 – Deploy Flask App to EC2 + Connect to RDS ✅/🕐/❌
-Planned hours: 12 | Actual: ___  
+### Week 8 – Deploy Flask App to EC2 + Connect to RDS ✅
+Planned hours: 12 | Actual: 12  
 
 #### Tasks
-- [ ] Use Terraform to provision EC2 with Docker installed (user_data script)
-- [ ] Deploy your Flask app container to EC2
-- [ ] Update Flask app to connect to RDS instead of local Postgres
-- [ ] Configure environment variables for RDS endpoint
-- [ ] Test the full stack: EC2 Flask → RDS
+- [x] Use Terraform to provision EC2 with Docker installed (user_data script)
+- [x] Deploy your Flask app container to EC2
+- [x] Update Flask app to connect to RDS instead of local Postgres
+- [x] Configure environment variables for RDS endpoint
+- [x] Test the full stack: EC2 Flask → RDS
 
 #### Resources
 - [Terraform EC2 User Data](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/instance#user_data)
@@ -500,9 +500,51 @@ Planned hours: 12 | Actual: ___
 - Architecture diagram: Internet → EC2 (Flask) → RDS
 
 #### Reflection
-**What I learned:**  
-**What broke:**  
-**Next actions:**  
+
+**What I learned:**
+
+**Docker Hub registry workflow** - Push and pull workflow was straightforward once I understood the tagging convention (`stillron/flask-app:latest`). The Docker Hub web interface showed vulnerability scanning results automatically, which was a nice discovery - gives me visibility into security issues in my images without additional tooling. The key insight: registries aren't just storage, they're part of the security pipeline.
+
+**User_data bootstrapping** - Learned that Debian's `docker.io` package provides Docker CE directly from Debian repos, eliminating the need to set up Docker's official repository for simple deployments. This simplified the user_data script significantly. The heredoc syntax (`<<-EOF`) in Terraform made it easy to write multi-line bash scripts inline, though I recognize this approach has limits - complex server configuration would quickly become unwieldy and should use proper configuration management tools.
+
+**Environment variables in containerized deployments** - Caught a critical mismatch before applying: my Flask app expected individual environment variables (`POSTGRES_USER`, `POSTGRES_PASSWORD`, `POSTGRES_DBHOST`, `POSTGRES_DB`) but my initial user_data script was passing a single `DATABASE_URL` connection string. This reinforced the importance of understanding how your application code actually reads configuration - can't just assume container deployment will work the same as docker-compose development environment.
+
+**Security group patterns** - Reinforced Week 7's pattern where security groups can reference other security groups using `referenced_security_group_id`. This allows EC2 → RDS communication without hardcoding IP addresses, and the dependency chain works automatically because of Terraform's implicit dependencies from resource references.
+
+**Infrastructure-as-Code dependencies** - Discovered that Terraform automatically determines resource creation order by analyzing references in configuration. Because user_data referenced `${aws_db_instance.flask_db.address}`, Terraform knew to create RDS before EC2 without explicit `depends_on` declarations. This is a key advantage of declarative infrastructure code.
+
+**What broke:**
+
+**Security group ID references** - Repeatedly forgot to add `.id` to security group references in `vpc_security_group_ids` lists. Typing `aws_security_group.web_sg` creates a string literal, not a reference. Need to internalize that resource references always need the attribute: `aws_security_group.web_sg.id`. This happened multiple times during configuration, suggesting I need more practice with Terraform's reference syntax.
+
+**Database initialization** - Had to manually create tables by SSHing into EC2, installing postgresql-client, connecting to RDS, and running SQL commands. This worked for the learning exercise but isn't sustainable. In a production application, I would either: (1) have the Flask app bootstrap tables on startup, (2) use database migration tools like Alembic, or (3) include database initialization in infrastructure provisioning (possibly with Terraform provisioners or configuration management).
+
+**What I'll improve next week:**
+
+Continue building Terraform configurations from scratch rather than copying previous work - the repetition is building muscle memory for resource references and dependency patterns. Week 8 brought together containerization (Month 1) with infrastructure provisioning (Month 2), demonstrating how these skills combine in real deployments.
+
+**Key commands/patterns to remember:**
+
+**Docker Hub workflow:**
+- `docker login` - authenticate to Docker Hub
+- `docker build -t stillron/flask-app:latest .` - build with registry-qualified tag
+- `docker push stillron/flask-app:latest` - push to registry
+- `docker pull stillron/flask-app:latest` - pull from registry (on EC2)
+
+**Terraform patterns:**
+- User_data heredoc: `user_data = <<-EOF ... EOF`
+- Security group references: `referenced_security_group_id = aws_security_group.other_sg.id`
+- Implicit dependencies: References create automatic ordering
+- Resource attribute pattern: Always `resource_type.local_name.attribute`
+
+**Container environment variables:**
+- Pass individual vars: `-e VAR_NAME="value"`
+- Reference Terraform values in user_data: `${var.my_variable}`
+- Reference resource attributes: `${aws_db_instance.flask_db.address}`
+
+**Next actions:**
+
+Week 8 successfully demonstrated registry-based deployment and cloud infrastructure integration. Completed the core learning goal of deploying containerized applications to EC2 with RDS backend. Ready to move to Week 9 (Terraform best practices and remote state) or explore AWS ECR as bonus exercise.
 
 ---
 
