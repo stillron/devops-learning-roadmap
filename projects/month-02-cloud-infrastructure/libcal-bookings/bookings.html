@@ -1,0 +1,65 @@
+<h2 class="booking-space-heading">{{ space.space_name }}</h2>
+{% for day in bookings %}
+<div class="booking-day">
+    <h3 class="booking-day-name">{{ day.day }}</h3>
+    {% if not day.bookings %}
+    <div class="no-bookings">
+        <p>No bookings for {{ day.day }}</p>
+    </div>
+    {% else %}
+    {% for booking in day.bookings %}
+    <div class="booking-card">
+        <div class="booking-card-heading {% if booking.after_hours %}booking-card-bold{% endif %}">{%if
+            booking.after_hours %}AFTER HOURS -- {% endif %} {{ booking.start |
+            format_time }} - {{ booking.end | format_time }}</div>
+        <div class="booking-card-inner">
+            <div class="card-icon">
+                <i
+                    class="fa fa-3x {% if booking.after_hours %}fa-exclamation-triangle{% else %}fa-calendar{% endif %}"></i>
+            </div>
+            <div class="card-content">
+                <p class="booking-name">Name: {{ booking.name }}</h3>
+                <p class="booking-space">Space: {{ booking.space }}</p>
+            </div>
+        </div>
+        {% if booking.notes %}
+        <div class="booking-notes-area" x-data="{open: false}">
+            <button class="btn btn-template-main" @click="open = ! open">
+                <span x-show="!open">Show Note{% if booking.notes | length > 1 %}s{% endif %}</span>
+                <span x-show="open">Hide Note{% if booking.notes | length > 1 %}s{% endif %}</span>
+            </button>
+
+            <div class="booking-notes" x-show="open" x-transition>
+                {% for note in booking.notes %}
+                <div class="booking-note">
+                    <div class="booking-note-meta">
+                        <span class="booking-note-name">{{ note.name }} </span>
+                        <span class="booking-note-datetime">-- {{ note.created | format_shortdt}}</span>
+                    </div>
+                    <div class="booking-note-message">{{ note.note }}</div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+    </div>
+    {% endfor %}
+    {% endif %}
+</div>
+{% endfor %}
+
+
+<div id="bookings-timestamp" hx-swap-oob="true">
+    <p>Last updated:</p>
+    <p>{{ timestamp | format_timestamp }}</p>
+</div>
+
+<button id="refresh-btn"
+        class="btn btn-template-main"
+        hx-post="/api/bookings/refresh?id={{ space.space_id }}" 
+        hx-target="#bookings" 
+        hx-swap="innerHTML swap:.5s"
+        hx-indicator="#spinner"
+        hx-swap-oob="true">
+    Refresh Bookings
+</button>

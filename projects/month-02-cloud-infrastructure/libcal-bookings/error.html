@@ -1,0 +1,9 @@
+<div class="bookings-error">
+    <h2>Unable to load bookings</h2>
+    <p>The booking data hasn't been fetched yet or there was an error loading it.</p>
+    <button hx-post="/api/bookings/refresh" 
+            hx-target="#bookings"
+            hx-swap="innerHTML swap:.5s">
+        Fetch Bookings Now
+    </button>
+</div>

@@ -1,0 +1,35 @@
+name: libcal-bookings-dev
+services:
+  bookings:
+    build: .
+    networks:
+      - bookings-app-network
+    ports:
+      - 5000:5000
+    volumes:
+      - data:/app/data
+    env_file:
+      - .env
+    environment:
+      TZ: America/New_York
+    restart: unless-stopped
+  web:
+    image: nginx:stable-alpine
+    networks:
+      - bookings-app-network
+    ports:
+      - 8080:80
+    volumes:
+      - ./dev/nginx.dev.conf:/etc/nginx/conf.d/default.conf:ro
+      - ../internet.devel/intranet/public:/usr/share/nginx/html:ro
+    restart: unless-stopped
+    depends_on:
+      - bookings
+
+
+networks:
+  bookings-app-network:
+
+volumes:
+  data:
+

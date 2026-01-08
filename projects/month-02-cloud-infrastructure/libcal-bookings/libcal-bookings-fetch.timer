@@ -1,0 +1,11 @@
+[Unit]
+Description=Fetch LibCal bookings every 15 minutes
+Requires=libcal-bookings-fetch.service
+
+[Timer]
+OnBootSec=2min
+OnUnitActiveSec=15min
+Unit=libcal-bookings-fetch.service
+
+[Install]
+WantedBy=timers.target

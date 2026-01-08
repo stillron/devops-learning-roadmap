@@ -1,0 +1,18 @@
+name: libcal-bookings
+
+services:
+  bookings:
+    image: stillron/libcal-bookings:v1.0.1
+    ports:
+      - "127.0.0.1:5000:5000"
+    volumes:
+      - bookings-data:/app/data
+    env_file:
+      - .env
+    environment:
+      TZ: America/New_York
+    restart: unless-stopped
+
+volumes:
+  bookings-data:
+

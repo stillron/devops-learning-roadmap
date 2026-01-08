@@ -1,0 +1,16 @@
+[project]
+name = "libcal-bookings"
+version = "0.1.0"
+description = "Add your description here"
+requires-python = ">=3.14"
+dependencies = [
+    "flask>=3.1.2",
+    "granian>=2.6.0",
+    "python-dotenv>=1.2.1",
+    "requests>=2.32.5",
+]
+
+[dependency-groups]
+dev = [
+    "flask-cors>=6.0.2",
+]
