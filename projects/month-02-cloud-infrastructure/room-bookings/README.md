@@ -149,7 +149,6 @@ libcal-bookings/
 │   ├── libcal-bookings-fetch.service
 │   └── libcal-bookings-fetch.timer
 └── docs/
-    ├── architecture.md       # System design documentation
     └── screenshots/
 ```
 
