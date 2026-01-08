@@ -241,7 +241,7 @@ docker compose up -d
 
 ## Live Deployment
 
-This application is currently running in production at Lebanon Public Libraries, serving approximately 40 staff members across two library locations.
+This application is currently running in production at Lebanon Public Libraries, serving approximately 30 staff members across two library locations.
 
 ---
 
