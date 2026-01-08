@@ -235,9 +235,8 @@ docker compose up -d
 
 **Production Operations**
 - Versioned Docker images in registry
-- Blue-green deployment capability
-- Container security scanning
-- Zero-downtime deployments
+- Versioned deployments with rollback capability
+- Container security scanning (Trivy)
 
 ## Live Deployment
 
