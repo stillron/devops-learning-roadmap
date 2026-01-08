@@ -208,9 +208,6 @@ docker compose up -d
 
 ### Potential Features
 - Email/SMS alerts for after-hours bookings
-- Historical booking analytics
-- Room availability predictions
-- Calendar export functionality
 
 ## Technologies Demonstrated
 
